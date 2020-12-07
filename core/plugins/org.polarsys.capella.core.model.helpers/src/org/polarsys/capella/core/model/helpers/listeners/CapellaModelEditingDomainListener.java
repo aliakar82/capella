@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -29,7 +29,9 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
   private CapellaModelDataListenerForAbstractStates _dataListenerForAbstractStates;
   private CapellaModelDataListenerForSequenceMessages _dataListenerForSequenceMessages;
   private CapellaModelDataListenerForPartsAndComponents _dataListenerForPartsAndComponents;
+  private CapellaModelDataListenerForInstanceRole dataListenerForInstanceRole;
   private CapellaModelDataListenerForExchangeItemsAndCommunicationLinks _dataListenerForExchangeItemsAndCommunicationLinks;
+  private CapellaModelDataListenerForExchangeItemAndExchangeItemInstance dataListenerForExchangeItemAndExchangeItemInstance;
 
   /**
    * @see org.polarsys.capella.common.ef.domain.IEditingDomainListener#createdEditingDomain(EditingDomain)
@@ -55,8 +57,9 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
     loadDataListenerForSequenceMessages(editingDomain);
     loadDataListenerForExchangeItemsAndCommunicationLinks(editingDomain);
     loadDataListenerForPartsAndComponents(editingDomain);
+    loadDataListenerForInstanceRoles(editingDomain);
     loadDataListenerForAbstractStates(editingDomain);
-
+    loadDataListenerForExchangeItemAndExchangeItemInstance(editingDomain);
   }
 
   /**
@@ -106,6 +109,13 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
     }
   }
 
+  private void loadDataListenerForInstanceRoles(SemanticEditingDomain editingDomain) {
+    if (dataListenerForInstanceRole == null && editingDomain.getDataNotifier() != null) {
+      dataListenerForInstanceRole = new CapellaModelDataListenerForInstanceRole();
+      editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class, dataListenerForInstanceRole);
+    }
+  }
+
   /**
    * loads the data listener
    */
@@ -115,6 +125,16 @@ public class CapellaModelEditingDomainListener extends ResourceSetListenerImpl i
         _dataListenerForExchangeItemsAndCommunicationLinks = new CapellaModelDataListenerForExchangeItemsAndCommunicationLinks();
         editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class,
             _dataListenerForExchangeItemsAndCommunicationLinks);
+      }
+    }
+  }
+
+  private void loadDataListenerForExchangeItemAndExchangeItemInstance(SemanticEditingDomain editingDomain) {
+    if (dataListenerForExchangeItemAndExchangeItemInstance == null) {
+      if (editingDomain.getDataNotifier() != null) {
+        dataListenerForExchangeItemAndExchangeItemInstance = new CapellaModelDataListenerForExchangeItemAndExchangeItemInstance();
+        editingDomain.getDataNotifier().addAdapter(AbstractNamedElement.class,
+            dataListenerForExchangeItemAndExchangeItemInstance);
       }
     }
   }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -49,7 +49,7 @@ public interface ReDescriptionElement extends ReNamedElement {
 	 * @return the value of the '<em>Description</em>' attribute.
 	 * @see #setDescription(String)
 	 * @see org.polarsys.capella.common.re.RePackage#getReDescriptionElement_Description()
-	 * @model
+	 * @model annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

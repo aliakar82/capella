@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -176,8 +176,10 @@ public class PhysicalPathItemProvider
 	 * This adds a property descriptor for the Involved Links feature.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 */
+	@Deprecated
 	protected void addInvolvedLinksPropertyDescriptor(Object object) {
 
 		// begin-extension-code

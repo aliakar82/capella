@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,7 +15,9 @@ package org.polarsys.capella.core.projection.scenario.topdown;
 import org.polarsys.capella.core.data.cs.BlockArchitecture;
 import org.polarsys.capella.core.data.interaction.Scenario;
 import org.polarsys.capella.core.data.interaction.ScenarioKind;
+import org.polarsys.capella.core.data.oa.OperationalAnalysis;
 import org.polarsys.capella.core.model.helpers.BlockArchitectureExt;
+import org.polarsys.capella.core.model.helpers.ScenarioExt;
 
 /**
  */
@@ -30,6 +32,15 @@ public class FS2FSTransform extends TopDownTransform {
     BlockArchitecture sourceBlock = BlockArchitectureExt.getRootBlockArchitecture(contextElement_p);
     BlockArchitecture targetBlock = BlockArchitectureExt.getRootBlockArchitecture(scenario_p);
 
-    return (scenario_p.getKind() == ScenarioKind.FUNCTIONAL) && !sourceBlock.equals(targetBlock);
+    if(!sourceBlock.equals(targetBlock)) {
+      if(scenario_p.getKind() == ScenarioKind.FUNCTIONAL) {
+        return true;
+      }
+      if(sourceBlock instanceof OperationalAnalysis) {
+        return ScenarioExt.isFunctionalScenario(contextElement_p) &&
+            ScenarioExt.isFunctionalScenario(scenario_p);
+      }
+    }
+    return false;
   }
 }

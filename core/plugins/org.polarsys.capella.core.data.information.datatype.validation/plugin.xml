@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -17,7 +17,7 @@
          point="org.eclipse.emf.validation.constraintProviders">
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/information/datatype/1.4.0">
+               namespaceUri="http://www.polarsys.org/capella/core/information/datatype/5.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">
@@ -63,7 +63,7 @@
       </constraintProvider>
       <constraintProvider>
          <package
-               namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/1.4.0">
+               namespaceUri="http://www.polarsys.org/capella/core/information/datavalue/5.0.0">
          </package>
          <constraints
                categories="capella.category/design/well-formedness/data">

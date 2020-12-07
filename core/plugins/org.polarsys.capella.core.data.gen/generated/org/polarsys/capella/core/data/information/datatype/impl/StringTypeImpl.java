@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -185,6 +185,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(AbstractStringValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -271,6 +272,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(AbstractStringValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -357,6 +359,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinLength(NumericValue newOwnedMinLength) {
 
 		if (newOwnedMinLength != ownedMinLength) {
@@ -443,6 +446,7 @@ public class StringTypeImpl extends DataTypeImpl implements StringType {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxLength(NumericValue newOwnedMaxLength) {
 
 		if (newOwnedMaxLength != ownedMaxLength) {

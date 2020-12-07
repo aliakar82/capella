@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  *  
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
@@ -27,6 +27,7 @@ import org.polarsys.capella.core.data.capellacore.CapellaElement;
  * @model interface="true" abstract="true"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='' usage\040guideline='n/a' used\040in\040levels='operational,system,logical,physical' usage\040examples='n/a' constraints='none' comment/notes='none' reference\040documentation='none'"
  *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 

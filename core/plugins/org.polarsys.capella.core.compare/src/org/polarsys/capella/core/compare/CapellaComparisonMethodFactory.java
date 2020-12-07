@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -18,6 +18,7 @@ import java.util.Collections;
 import org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethodFactory;
 import org.eclipse.emf.diffmerge.ui.specification.IComparisonMethod;
 import org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition;
+import org.eclipse.emf.ecore.EObject;
 
 
 /**
@@ -29,7 +30,7 @@ public class CapellaComparisonMethodFactory extends SiriusComparisonMethodFactor
    * @see org.eclipse.emf.diffmerge.ui.sirius.SiriusComparisonMethodFactory#createComparisonMethod(org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition, org.eclipse.emf.diffmerge.ui.specification.IModelScopeDefinition)
    */
   @Override
-  public IComparisonMethod createComparisonMethod(
+  public IComparisonMethod<EObject> createComparisonMethod(
       IModelScopeDefinition leftScopeSpec, IModelScopeDefinition rightScopeSpec,
       IModelScopeDefinition ancestorScopeSpec) {
     return new CapellaComparisonMethod(

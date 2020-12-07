@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -14,8 +14,9 @@ package org.polarsys.capella.common.re.launcher;
 
 import java.util.Collection;
 
-import org.eclipse.emf.diffmerge.api.IComparison;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
+import org.eclipse.emf.diffmerge.diffdata.EComparison;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.activities.DifferencesComputingActivity;
 import org.polarsys.capella.common.re.activities.FinalizeTransitionActivity;
 import org.polarsys.capella.common.re.activities.InitializeReMgtActivity;
@@ -93,7 +94,7 @@ public class Rpl2RecConformanceCheckLauncher extends ReLauncher {
     return new DefaultMergeHandler(true){
 
       @Override
-      protected void mergeDifferences(IComparison comparison, Collection<IDifference> differences) {
+      protected void mergeDifferences(EComparison comparison, Collection<IDifference<EObject>> differences) {
         isConform = differences.isEmpty();
       }
     };

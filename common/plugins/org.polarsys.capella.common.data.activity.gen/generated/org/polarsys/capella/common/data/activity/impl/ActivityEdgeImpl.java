@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -235,6 +235,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setKindOfRate(RateKind newKindOfRate) {
 
 		RateKind oldKindOfRate = kindOfRate;
@@ -491,6 +492,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setRate(ValueSpecification newRate) {
 
 		if (newRate != rate) {
@@ -577,6 +579,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setProbability(ValueSpecification newProbability) {
 
 		if (newProbability != probability) {
@@ -637,6 +640,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(ActivityNode newTarget) {
 
 		ActivityNode oldTarget = target;
@@ -690,6 +694,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(ActivityNode newSource) {
 
 		ActivityNode oldSource = source;
@@ -769,6 +774,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setGuard(ValueSpecification newGuard) {
 
 		if (newGuard != guard) {
@@ -855,6 +861,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setWeight(ValueSpecification newWeight) {
 
 		if (newWeight != weight) {
@@ -935,6 +942,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	 * @generated
 	 */
 
+	@Override
 	public void setInterrupts(InterruptibleActivityRegion newInterrupts) {
 
 		if (newInterrupts != interrupts) {
@@ -1155,7 +1163,7 @@ public abstract class ActivityEdgeImpl extends AbstractRelationshipImpl implemen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kindOfRate: "); //$NON-NLS-1$
 		result.append(kindOfRate);
 		result.append(')');

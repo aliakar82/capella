@@ -1,6 +1,6 @@
 /**
  * 
- *   Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ *   Copyright (c) 2006, 2020 THALES DMS FRANCE.
  *   
  *   This program and the accompanying materials are made available under the
  *   terms of the Eclipse Public License 2.0 which is available at
@@ -95,9 +95,20 @@ public final class FunctionalChain__involvingCapabilityRealizations extends Base
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public FunctionalChain getSelf() {
@@ -629,9 +640,9 @@ public final class FunctionalChain__involvingCapabilityRealizations extends Base
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations (visibility: PUBLIC, simpleName: FunctionalChain__involvingCapabilityRealizations, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link FunctionalChain__involvingCapabilityRealizations} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations (visibility: PUBLIC, simpleName: FunctionalChain__involvingCapabilityRealizations, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.FunctionalChain__involvingCapabilityRealizations, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link FunctionalChain__involvingCapabilityRealizations#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -657,9 +668,9 @@ public final class FunctionalChain__involvingCapabilityRealizations extends Base
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final FunctionalChain__involvingCapabilityRealizations.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.fa.FunctionalChain", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChain")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.fa.FunctionalChain", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChain")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.la.CapabilityRealization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.la.CapabilityRealization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/la/5.0.0", "CapabilityRealization")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -691,23 +702,23 @@ public final class FunctionalChain__involvingCapabilityRealizations extends Base
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
           PVariable var_fcaci = body.getOrCreateVariableByName("fcaci");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChain")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/1.4.0", "CapabilityRealization")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChain")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/la/5.0.0", "CapabilityRealization")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	FunctionalChain.involvingInvolvements(self, fcaci)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChain")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChain")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "InvolvedElement", "involvingInvolvements")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "InvolvedElement", "involvingInvolvements")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "Involvement")));
           new Equality(body, var__virtual_0_, var_fcaci);
           // FunctionalChainAbstractCapabilityInvolvement.capability(fcaci, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_fcaci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "FunctionalChainAbstractCapabilityInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_fcaci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/5.0.0", "FunctionalChainAbstractCapabilityInvolvement")));
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_fcaci, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "FunctionalChainAbstractCapabilityInvolvement", "capability")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/1.4.0", "AbstractCapability")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_fcaci, var__virtual_1_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/interaction/5.0.0", "FunctionalChainAbstractCapabilityInvolvement", "capability")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_1_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/interaction/5.0.0", "AbstractCapability")));
           new Equality(body, var__virtual_1_, var_target);
           bodies.add(body);
       }

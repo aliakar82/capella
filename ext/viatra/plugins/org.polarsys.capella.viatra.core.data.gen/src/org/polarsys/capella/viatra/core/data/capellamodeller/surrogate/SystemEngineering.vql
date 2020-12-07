@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ * Copyright (c) 2006, 2020 THALES DMS FRANCE.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,15 +15,15 @@
 
 package org.polarsys.capella.viatra.core.data.capellamodeller.surrogate
 
-import "http://www.polarsys.org/capella/core/modeller/1.4.0"
+import "http://www.polarsys.org/capella/core/modeller/5.0.0"
 
 // Start of user code for imports 
-import "http://www.polarsys.org/capella/core/core/1.4.0"
-import "http://www.polarsys.org/capella/core/oa/1.4.0"
-import "http://www.polarsys.org/capella/core/ctx/1.4.0"
-import "http://www.polarsys.org/capella/core/la/1.4.0"
-import "http://www.polarsys.org/capella/core/pa/1.4.0"
-import "http://www.polarsys.org/capella/core/epbs/1.4.0"
+import "http://www.polarsys.org/capella/core/core/5.0.0"
+import "http://www.polarsys.org/capella/core/oa/5.0.0"
+import "http://www.polarsys.org/capella/core/ctx/5.0.0"
+import "http://www.polarsys.org/capella/core/la/5.0.0"
+import "http://www.polarsys.org/capella/core/pa/5.0.0"
+import "http://www.polarsys.org/capella/core/epbs/5.0.0"
 
 // End of user code
 

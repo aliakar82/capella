@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -171,6 +171,13 @@ public class TopDownExt {
             }
           }
         }
+      }
+
+      // Fallback: If we can't find from the targetOperation a corresponding part which is related somehow
+      // to the source instance role part (realized or child of realized), then we propose all parts as candidate.
+      // (user rather like an inconsistent diagram than an incomplete diagram)
+      if (partBounds.isEmpty()) {
+        partBounds.addAll(relatedParts);
       }
 
     } else if (ScenarioExt.isExchangeItemInstanceRole(sourceEnd)) {

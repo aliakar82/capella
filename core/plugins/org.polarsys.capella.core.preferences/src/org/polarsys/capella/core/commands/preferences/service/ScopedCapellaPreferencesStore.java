@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,6 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.commands.preferences.service;
 
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +30,6 @@ import org.eclipse.core.runtime.preferences.IEclipsePreferences;
 import org.eclipse.core.runtime.preferences.IPreferencesService;
 import org.eclipse.core.runtime.preferences.IScopeContext;
 import org.eclipse.core.runtime.preferences.InstanceScope;
-import org.eclipse.jface.preference.FieldEditor;
 import org.eclipse.ui.preferences.ScopedPreferenceStore;
 import org.osgi.service.prefs.BackingStoreException;
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
@@ -47,8 +48,6 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
 
   private static Map<String, String> options;
 
-  public static Map<FieldEditor, String> fields;
-
   private static final Map<IProject, IScopeContext> projectScopes = new HashMap<IProject, IScopeContext>(0);
 
   private static final String PREFERENCE_SEPARATOR = "."; //$NON-NLS-1$
@@ -56,7 +55,6 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
   static {
     options = new HashMap<String, String>();
     DEFAULT_OPTIONS_MAP = Collections.unmodifiableMap(options);
-    fields = new HashMap<FieldEditor, String>(0);
   }
 
   private ScopedCapellaPreferencesStore(String pluginId) {
@@ -401,6 +399,22 @@ public class ScopedCapellaPreferencesStore extends ScopedPreferenceStore {
     
   }
 
+  public void saveForExport() {
+    try {
+      IEclipsePreferences defaultPreferences = DefaultScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+      IEclipsePreferences instancePreferences = InstanceScope.INSTANCE.getNode(Activator.PLUGIN_ID);
+      Collection<String> instanceKeys = Arrays.asList(instancePreferences.keys());
+      for (String name: defaultPreferences.keys()) {
+        if (!instanceKeys.contains(name)) {
+          instancePreferences.put(name, defaultPreferences.get(name, ""));
+        }
+      }
+    } catch (BackingStoreException e) {
+      getLogger().warn(e.getMessage(), e);
+    }
+    save();
+  }
+  
   /**
    * @throws BackingStoreException
    */

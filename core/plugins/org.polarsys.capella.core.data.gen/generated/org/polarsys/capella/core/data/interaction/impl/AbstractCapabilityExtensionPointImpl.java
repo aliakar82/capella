@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -156,6 +156,7 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -432,7 +433,7 @@ public class AbstractCapabilityExtensionPointImpl extends RelationshipImpl imple
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

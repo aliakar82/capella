@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -223,6 +223,7 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -591,6 +592,7 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setLocalPrecondition(AbstractConstraint newLocalPrecondition) {
 
 		if (newLocalPrecondition != localPrecondition) {
@@ -677,6 +679,7 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setLocalPostcondition(AbstractConstraint newLocalPostcondition) {
 
 		if (newLocalPostcondition != localPostcondition) {
@@ -737,6 +740,7 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	 * @generated
 	 */
 
+	@Override
 	public void setContext(AbstractType newContext) {
 
 		AbstractType oldContext = context;
@@ -1067,7 +1071,7 @@ public abstract class StructuredActivityNodeImpl extends ActivityGroupImpl imple
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(')');

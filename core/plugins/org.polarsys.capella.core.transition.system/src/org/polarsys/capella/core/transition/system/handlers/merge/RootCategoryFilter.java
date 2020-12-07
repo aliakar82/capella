@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,9 +12,10 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.data.capellamodeller.Project;
 import org.polarsys.capella.core.data.capellamodeller.SystemEngineering;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -32,10 +33,10 @@ public class RootCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
+  public boolean covers(IDifference<EObject> difference) {
     // Filter SystemEngineering differences
-    if (difference instanceof IValuePresence) {
-      IValuePresence presence = (IValuePresence) difference;
+    if (difference instanceof EValuePresence) {
+      EValuePresence presence = (EValuePresence) difference;
       if (presence.getElementMatch().get(Role.REFERENCE) instanceof SystemEngineering
           || presence.getElementMatch().get(Role.REFERENCE) instanceof Project) {
         return true;

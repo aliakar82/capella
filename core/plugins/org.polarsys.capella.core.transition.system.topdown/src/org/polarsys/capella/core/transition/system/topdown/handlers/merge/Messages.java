@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -35,6 +35,8 @@ public class Messages extends NLS {
   public static String ArchitectureLinkCategoryFilter_Description;
   public static String RemoveRealizedCategoryFilter;
   public static String RemoveRealizedCategoryFilter_Description;
+  public static String NoLeafFunctionalAllocationCategoryFilter;
+  public static String NoLeafFunctionalAllocationCategoryFilter_Description;
 
   static {
     // initialize resource bundle

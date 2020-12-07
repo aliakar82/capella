@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -37,6 +37,9 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
 
   /** a progress monitor */
   private IProgressMonitor progressMonitor = null;
+  
+  /* elements that are transitioned */
+  protected Collection<EObject> elements = null;
 
   /**
    * @see org.polarsys.capella.common.ef.command.AbstractCommand#getName()
@@ -90,7 +93,7 @@ public abstract class AbstractTransitionCommand extends AbstractReadWriteCommand
 
       if ((rootElements != null) && (rootElements.size() > 0)) {
 
-        Collection<EObject> elements = new ArrayList<EObject>();
+        elements = new ArrayList<EObject>();
 
         for (EObject rootElement : rootElements) {
           elements.addAll(retrieveModelElements(rootElement));

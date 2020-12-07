@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -33,6 +33,7 @@ public class DWFDSRulesTestSuite extends BasicTestSuite {
   /**
    * @see org.polarsys.capella.test.framework.api.BasicTestSuite#getTests()
    */
+  @Override
   protected List<BasicTestArtefact> getTests() {
     List<BasicTestArtefact> tests = new ArrayList<BasicTestArtefact>();
     tests.add(new Rule_DWF_DS_01());
@@ -57,11 +58,13 @@ public class DWFDSRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_DWF_DS_20());
     tests.add(new Rule_DWF_DS_21());
     tests.add(new Rule_DWF_DS_22());
+    tests.add(new Rule_DWF_DS_23());
+    tests.add(new Rule_DWF_DS_24());
     return tests;
   }
 
   @Override
-  public List<String> getRequiredTestModels() {   
-    return Arrays.asList(new String [] {"RulesOnDesignTest"});  //$NON-NLS-1$
+  public List<String> getRequiredTestModels() {
+    return Arrays.asList(new String[] { "RulesOnDesignTest" }); //$NON-NLS-1$
   }
 }

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -148,6 +148,7 @@ public class UnionImpl extends ClassImpl implements Union {
 	 * @generated
 	 */
 
+	@Override
 	public void setKind(UnionKind newKind) {
 
 		UnionKind oldKind = kind;
@@ -201,6 +202,7 @@ public class UnionImpl extends ClassImpl implements Union {
 	 * @generated
 	 */
 
+	@Override
 	public void setDiscriminant(UnionProperty newDiscriminant) {
 
 		UnionProperty oldDiscriminant = discriminant;
@@ -254,6 +256,7 @@ public class UnionImpl extends ClassImpl implements Union {
 	 * @generated
 	 */
 
+	@Override
 	public void setDefaultProperty(UnionProperty newDefaultProperty) {
 
 		UnionProperty oldDefaultProperty = defaultProperty;
@@ -410,7 +413,7 @@ public class UnionImpl extends ClassImpl implements Union {
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (kind: "); //$NON-NLS-1$
 		result.append(kind);
 		result.append(')');

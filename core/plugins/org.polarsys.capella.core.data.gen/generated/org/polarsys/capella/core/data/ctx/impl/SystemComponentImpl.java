@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  *  
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
@@ -261,6 +261,7 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	 * @generated
 	 */
 
+	@Override
 	public void setDataComponent(boolean newDataComponent) {
 
 		boolean oldDataComponent = dataComponent;
@@ -793,7 +794,7 @@ public class SystemComponentImpl extends ComponentImpl implements SystemComponen
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (dataComponent: "); //$NON-NLS-1$
 		result.append(dataComponent);
 		result.append(')');

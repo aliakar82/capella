@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -13,17 +13,16 @@
 
 package org.polarsys.capella.core.transition.common.policies.merge;
 
-import org.eclipse.emf.diffmerge.api.IMergePolicy;
-import org.eclipse.emf.diffmerge.api.diff.IMergeableDifference;
-import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.diffmerge.generic.api.IMergePolicy;
+import org.eclipse.emf.diffmerge.generic.api.diff.IMergeableDifference;
 
 /**
  *
  */
-public interface IMergePolicy2 extends IMergePolicy {
+public interface IMergePolicy2<E> extends IMergePolicy<E> {
 
-  boolean copy(EObject source);
+  boolean copy(E source);
 
-  void setDependencies(IMergeableDifference difference);
+  void setDependencies(IMergeableDifference<E> difference);
 
 }

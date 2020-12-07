@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?eclipse version="3.2"?>
 <!--
-  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
   
   This program and the accompanying materials are made available under the
   terms of the Eclipse Public License 2.0 which is available at
@@ -157,15 +157,6 @@
       <migrationContribution
             class="org.polarsys.capella.core.data.migration.capella.OpaqueExpressionMigrationContribution">
       </migrationContribution>
-      <migrationContribution
-            class="org.polarsys.capella.core.data.migration.capella.FunctionalChainMigrationContribution">
-      </migrationContribution>
-      <migrationContribution
-            class="org.polarsys.capella.core.data.migration.capella.ActorRefactoringMigrationContribution">
-      </migrationContribution>
-       <migrationContribution
-            class="org.polarsys.capella.core.data.migration.aird.FilterMigrationContribution">
-      </migrationContribution>
        <migrationContribution
              class="org.polarsys.capella.core.data.migration.capella.InvalidAirdReferenceMigrationContribution">
        </migrationContribution>
@@ -182,9 +173,6 @@
       </migrationContributor>
       <migrationContributor
             class="org.polarsys.capella.core.data.migration.aird.AirdMigrationContributor">
-      </migrationContributor>
-      <migrationContributor
-            class="org.polarsys.capella.core.data.migration.aird.FCDDiagramMigrationContributor">
       </migrationContributor>
       <migrationContributor
          class="org.polarsys.capella.core.data.migration.af.ViewpointMigrationContributor"> 
@@ -209,7 +197,10 @@
    
    <extension
          point="org.polarsys.capella.core.data.migration.migrationContributions">
-         
+      <migrationContribution
+            class="org.polarsys.capella.core.data.migration.capella.LegacyResourceMigrationContribution">
+      </migrationContribution>
+ 
    </extension>
    
    

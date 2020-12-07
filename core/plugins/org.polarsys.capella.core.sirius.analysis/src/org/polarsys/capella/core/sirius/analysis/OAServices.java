@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -424,16 +424,22 @@ public class OAServices {
         displayedActivities.add((OperationalActivity) anElement.getTarget());
       }
     }
-    // Get source OA displayed in diagram for FE (it can be a parent of the real source OA).
-    OperationalActivity sourceOA = (OperationalActivity) sourceFunction;
-    EObject parent = sourceOA;
-    while (parent instanceof OperationalActivity) {
-      if (displayedActivities.contains(parent)) {
-        return ((OperationalActivity) parent);
-      }
-      parent = parent.eContainer();
+
+    if (displayedActivities.contains(sourceFunction)) {
+      return (OperationalActivity) sourceFunction;
     }
-    return sourceOA;
+
+    EObject nearestDisplayedParentOA = EcoreUtil2.getFirstContainer(sourceFunction,
+        eObj -> displayedActivities.contains(eObj));
+
+    if (nearestDisplayedParentOA instanceof OperationalActivity) {
+      AbstractFunction targetFunction = FunctionalExchangeExt.getTargetFunction(interaction);
+      if (!EcoreUtil.isAncestor(nearestDisplayedParentOA, targetFunction)) {
+        return (OperationalActivity) nearestDisplayedParentOA;
+      }
+    }
+
+    return null;
   }
 
   public OperationalActivity getInteractionTargetInDiagram(FunctionalExchange interaction, DDiagram diagram) {
@@ -449,16 +455,22 @@ public class OAServices {
         displayedActivities.add((OperationalActivity) anElement.getTarget());
       }
     }
-    // Get target OA displayed in diagram for FE (it can be a parent of the real target OA).
-    OperationalActivity targetOA = (OperationalActivity) targetFunction;
-    EObject parent = targetOA;
-    while (parent instanceof OperationalActivity) {
-      if (displayedActivities.contains(parent)) {
-        return ((OperationalActivity) parent);
-      }
-      parent = parent.eContainer();
+    
+    if (displayedActivities.contains(targetFunction)) {
+      return (OperationalActivity) targetFunction;
     }
-    return targetOA;
+    
+    EObject nearestDisplayedParentOA = EcoreUtil2.getFirstContainer(targetFunction,
+        eObj -> displayedActivities.contains(eObj));
+    
+    if (nearestDisplayedParentOA instanceof OperationalActivity) {
+      AbstractFunction sourceFunction = FunctionalExchangeExt.getSourceFunction(interaction);
+      if (!EcoreUtil.isAncestor(nearestDisplayedParentOA, sourceFunction)) {
+        return (OperationalActivity) nearestDisplayedParentOA;
+      }
+    }
+
+    return null;
   }
 
   public List<EObject> getAvailableOperationalActivityAllocations(Role role) {

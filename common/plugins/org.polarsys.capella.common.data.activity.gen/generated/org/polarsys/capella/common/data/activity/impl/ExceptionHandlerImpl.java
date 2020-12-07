@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -165,6 +165,7 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setProtectedNode(ExecutableNode newProtectedNode) {
 
 		if (newProtectedNode != eInternalContainer() || (eContainerFeatureID() != ActivityPackage.EXCEPTION_HANDLER__PROTECTED_NODE && newProtectedNode != null)) {
@@ -227,6 +228,7 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setHandlerBody(ExecutableNode newHandlerBody) {
 
 		ExecutableNode oldHandlerBody = handlerBody;
@@ -280,6 +282,7 @@ public abstract class ExceptionHandlerImpl extends ModelElementImpl implements E
 	 * @generated
 	 */
 
+	@Override
 	public void setExceptionInput(ObjectNode newExceptionInput) {
 
 		ObjectNode oldExceptionInput = exceptionInput;

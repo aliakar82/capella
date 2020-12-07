@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -31,6 +31,7 @@ import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
 import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.sirius.viewpoint.DRepresentationDescriptor;
+import org.eclipse.sirius.viewpoint.provider.SiriusEditPlugin;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.IActionBars;
@@ -38,26 +39,35 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.actions.ActionFactory;
 import org.eclipse.ui.actions.BaseSelectionListenerAction;
+import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.polarsys.capella.core.explorer.activity.ui.pages.AbstractCapellaPage;
 import org.polarsys.capella.core.model.handler.helpers.RepresentationHelper;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.CloneAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.move.representation.MoveRepresentationMenuManager;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.viewer.CapellaNavigatorLabelProvider;
 import org.polarsys.capella.core.sirius.ui.actions.DeleteRepresentationAction;
+import org.polarsys.capella.core.sirius.ui.actions.MoveRepresentationsAction;
 import org.polarsys.capella.core.sirius.ui.actions.OpenRepresentationsAction;
 import org.polarsys.capella.core.sirius.ui.actions.RenameRepresentationAction;
 
 public class CapellaDiagramViewer extends DiagramViewer {
 
   private static final String GROUP_MOVE = "Move"; //$NON-NLS-1$
-  private MoveRepresentationMenuManager moveRepresentationMenu;
+
+  private MoveRepresentationsAction moveRepresentation;
+
   private OpenRepresentationsAction openRepresentation;
+
   private RenameRepresentationAction renameRepresentationAction;
-  private BaseSelectionListenerAction showInCapellaExplorerAction;
+
+  private ShowInProjectExplorerAction showInCapellaExplorerAction;
+
   private CloneAction cloneAction;
+
   private DeleteRepresentationAction deleteRepresentationAction;
+
+  private MenuManager menuManager;
 
   public CapellaDiagramViewer(BasicSessionActivityExplorerPage page) {
     super(page);
@@ -69,6 +79,7 @@ public class CapellaDiagramViewer extends DiagramViewer {
       /**
        * @see org.eclipse.jface.viewers.IDoubleClickListener#doubleClick(org.eclipse.jface.viewers.DoubleClickEvent)
        */
+      @Override
       public void doubleClick(DoubleClickEvent event) {
         IStructuredSelection selection = (IStructuredSelection) event.getSelection();
         // Open selected representations.
@@ -81,15 +92,15 @@ public class CapellaDiagramViewer extends DiagramViewer {
 
   @Override
   protected MenuManager initMenuToViewer(final TreeViewer treeViewer) {
-    MenuManager contextMenuManager = new MenuManager("viewerPopup"); //$NON-NLS-1$
+    menuManager = new MenuManager("viewerPopup");
 
     Control control = treeViewer.getControl();
     // Add here some actions.
-    declareViewerActions(contextMenuManager, treeViewer);
-    Menu contextMenu = contextMenuManager.createContextMenu(control);
+    declareViewerActions(menuManager, treeViewer);
+    Menu contextMenu = menuManager.createContextMenu(control);
     control.setMenu(contextMenu);
 
-    return contextMenuManager;
+    return menuManager;
   }
 
   @Override
@@ -98,29 +109,10 @@ public class CapellaDiagramViewer extends DiagramViewer {
     ISharedImages sharedImages = PlatformUI.getWorkbench().getSharedImages();
     ISelectionProvider selectionProvider = page.getEditorSite().getSelectionProvider();
 
-    showInCapellaExplorerAction = new BaseSelectionListenerAction(Messages.AbstractCapellaArchitectureActivityExplorerPage_ShowInCapellaExplorerAction_Title) {
-      /**
-       * {@inheritDoc}
-       */
-      @SuppressWarnings("synthetic-access")
-      @Override
-      public void run() {
-        IStructuredSelection selection = showInCapellaExplorerAction.getStructuredSelection();
-        Collection<DRepresentationDescriptor> selectedDescriptors = RepresentationHelper.getSelectedDescriptors(selection.toList());
-        IAction locatingAction = LocateInCapellaExplorerAction.createLocateTowards((EObject) selectedDescriptors.toArray()[0], "", false);
-        locatingAction.run();
-      }
+    showInCapellaExplorerAction = new ShowInProjectExplorerAction();
 
-      /**
-       * {@inheritDoc}
-       */
-      @Override
-      protected boolean updateSelection(IStructuredSelection selection) {
-        return containsOnlyRepresentations(selection);
-      }
-    };
-
-    showInCapellaExplorerAction.setActionDefinitionId("org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"); //$NON-NLS-1$
+    showInCapellaExplorerAction
+        .setActionDefinitionId("org.polarsys.capella.core.platform.sirius.ui.navigator.locateInCapellaExplorerCommand"); //$NON-NLS-1$
     showInCapellaExplorerAction.setImageDescriptor(CapellaNavigatorPlugin.getDefault().getImageDescriptor(
         org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
     SelectionHelper.registerToSelectionChanges(showInCapellaExplorerAction, selectionProvider);
@@ -151,15 +143,18 @@ public class CapellaDiagramViewer extends DiagramViewer {
       }
     };
     deleteRepresentationAction.setImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE));
-    deleteRepresentationAction.setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
+    deleteRepresentationAction
+        .setDisabledImageDescriptor(sharedImages.getImageDescriptor(ISharedImages.IMG_TOOL_DELETE_DISABLED));
     SelectionHelper.registerToSelectionChanges(deleteRepresentationAction, selectionProvider);
     contextMenuManager.add(deleteRepresentationAction);
 
     contextMenuManager.add(new Separator(GROUP_MOVE));
-    moveRepresentationMenu = new MoveRepresentationMenuManager();
-    SelectionHelper.registerToSelectionChanges(moveRepresentationMenu, selectionProvider);
-    contextMenuManager.appendToGroup(GROUP_MOVE, moveRepresentationMenu);
-    
+    moveRepresentation = new MoveRepresentationsAction();
+    moveRepresentation.setImageDescriptor(
+        AbstractUIPlugin.imageDescriptorFromPlugin(SiriusEditPlugin.ID, "/icons/full/others/forward.gif"));
+    SelectionHelper.registerToSelectionChanges(moveRepresentation, selectionProvider);
+    contextMenuManager.appendToGroup(GROUP_MOVE, moveRepresentation);
+
     renameRepresentationAction = new RenameRepresentationAction() {
 
       @Override
@@ -173,6 +168,31 @@ public class CapellaDiagramViewer extends DiagramViewer {
     updateActionBars();
   }
 
+  public class ShowInProjectExplorerAction extends BaseSelectionListenerAction {
+
+    public ShowInProjectExplorerAction() {
+      super(Messages.AbstractCapellaArchitectureActivityExplorerPage_ShowInCapellaExplorerAction_Title);
+    }
+
+    @Override
+    public void run() {
+      IStructuredSelection selection = getStructuredSelection();
+      Collection<DRepresentationDescriptor> selectedDescriptors = RepresentationHelper
+          .getSelectedDescriptors(selection.toList());
+      IAction locatingAction = LocateInCapellaExplorerAction
+          .createLocateTowards((EObject) selectedDescriptors.toArray()[0], "", false);
+      locatingAction.run();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected boolean updateSelection(IStructuredSelection selection) {
+      return containsOnlyRepresentations(selection);
+    }
+  }
+
   @Override
   protected ILabelProvider getLabelProvider() {
     return new CapellaNavigatorLabelProvider();
@@ -180,7 +200,8 @@ public class CapellaDiagramViewer extends DiagramViewer {
 
   @Override
   protected IContentProvider getContentProvider() {
-    return new CapellaArchitectureContentProvider(((AbstractCapellaPage) page).getFilteringMetaClassForCommonViewpoint());
+    return new CapellaArchitectureContentProvider(
+        ((AbstractCapellaPage) page).getFilteringMetaClassForCommonViewpoint());
   }
 
   @Override
@@ -199,10 +220,9 @@ public class CapellaDiagramViewer extends DiagramViewer {
       selectionProvider.removeSelectionChangedListener(openRepresentation);
       openRepresentation = null;
     }
-    if (null != moveRepresentationMenu) {
-      selectionProvider.removeSelectionChangedListener(moveRepresentationMenu);
-      moveRepresentationMenu.dispose();
-      moveRepresentationMenu = null;
+    if (null != moveRepresentation) {
+      selectionProvider.removeSelectionChangedListener(moveRepresentation);
+      moveRepresentation = null;
     }
     if (null != cloneAction) {
       selectionProvider.removeSelectionChangedListener(cloneAction);
@@ -213,10 +233,15 @@ public class CapellaDiagramViewer extends DiagramViewer {
       showInCapellaExplorerAction = null;
     }
 
+    if (null != menuManager) {
+      menuManager.dispose();
+    }
+
   }
 
   /**
-   * Viewer filter driven by provided algorithm. Copied from: org.eclipse.amalgam.explorer.activity.ui.internal.DelegatedViewerFilter
+   * Viewer filter driven by provided algorithm. Copied from:
+   * org.eclipse.amalgam.explorer.activity.ui.internal.DelegatedViewerFilter
    */
   protected class DelegatedViewerFilter extends ViewerFilter {
     /**
@@ -225,7 +250,8 @@ public class CapellaDiagramViewer extends DiagramViewer {
     private ViewerFilter delegatedFilter;
 
     /**
-     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object, java.lang.Object)
+     * @see org.eclipse.jface.viewers.ViewerFilter#select(org.eclipse.jface.viewers.Viewer, java.lang.Object,
+     *      java.lang.Object)
      */
     @Override
     public boolean select(Viewer viewer, Object parentElement, Object element) {
@@ -250,6 +276,10 @@ public class CapellaDiagramViewer extends DiagramViewer {
     editorActionBars.setGlobalActionHandler(ActionFactory.RENAME.getId(), renameRepresentationAction);
     // Update action bars to make sure global ActionHandler are updated accordingly.
     editorActionBars.updateActionBars();
+  }
+
+  public MenuManager getMenuManager() {
+    return menuManager;
   }
 
 }

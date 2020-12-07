@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -134,9 +134,8 @@ public class ActorTransition extends TopDownTransitionTestCase {
    */
   private void actor3TransitionTest() {
     performActorTransition(Arrays.asList(laActor3));
-    paActor3 = paRootActorPkg.getOwnedPhysicalComponents().get(1);
+    paActor3 = mustBeTransitioned(ModelLaPa.actor3Id);
     mustNotBeNull(paActor3);
-
     assertTrue(NLS.bind(Messages.RealizationError, paActor3.getName(), laActor3.getName()),
         (ProjectionTestUtils.getRealizedTargetElement(paActor3) == laActor3));
   }

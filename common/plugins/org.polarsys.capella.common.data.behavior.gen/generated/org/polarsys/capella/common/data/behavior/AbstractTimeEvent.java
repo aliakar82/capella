@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -52,6 +52,7 @@ public interface AbstractTimeEvent extends AbstractEvent {
 	 * @see org.polarsys.capella.common.data.behavior.BehaviorPackage#getAbstractTimeEvent_IsRelative()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether it is relative or absolute time\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::TimeEvent::isRelative' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

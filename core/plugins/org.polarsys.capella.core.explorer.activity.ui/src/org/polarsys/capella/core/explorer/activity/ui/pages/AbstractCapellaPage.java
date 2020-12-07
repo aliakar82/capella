@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.explorer.activity.ui.pages;
 
+import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 import org.eclipse.amalgam.explorer.activity.ui.api.editor.input.ActivityExplorerEditorInput;
@@ -31,6 +33,13 @@ public abstract class AbstractCapellaPage extends BasicSessionActivityExplorerPa
     return new Class[] { CapellaDiagramViewer.class };
   }
 
+  public Optional<CapellaDiagramViewer> getCapellaDiagramViewer() {
+    return Arrays.stream(getListeners())//
+        .filter(CapellaDiagramViewer.class::isInstance) //
+        .map(CapellaDiagramViewer.class::cast) //
+        .findFirst();
+  }
+
   @Override
   protected String getHeaderTitle() {
     ActivityExplorerEditorInput editorInput = getEditorInput();
@@ -45,6 +54,7 @@ public abstract class AbstractCapellaPage extends BasicSessionActivityExplorerPa
    * Get the EClass this architecture page is handling.<br>
    * This EClass is used to filter out UI from other levels in Common viewpoint part.<br>
    * Example: in SA page we only display Common representations hold by CtxPackage.Literals.SYSTEM_ANALYSIS.
+   * 
    * @return
    */
   public abstract EClass getFilteringMetaClassForCommonViewpoint();

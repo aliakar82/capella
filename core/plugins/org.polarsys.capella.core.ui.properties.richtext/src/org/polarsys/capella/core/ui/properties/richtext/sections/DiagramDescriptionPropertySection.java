@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -81,7 +81,7 @@ public class DiagramDescriptionPropertySection extends DescriptionPropertySectio
       if (operation instanceof EMFCommandOperation) {
         // Get the command.
         Command command = ((EMFCommandOperation) operation).getCommand();
-        // Is the current melody element involved in this command ?
+        // Is the current element involved in this command ?
         if (command.getAffectedObjects().contains(representationDescriptor)) {
           // If so, let's refresh the content.
           refresh();

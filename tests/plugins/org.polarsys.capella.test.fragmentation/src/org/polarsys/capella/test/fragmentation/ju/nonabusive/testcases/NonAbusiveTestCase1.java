@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -36,7 +36,7 @@ public class NonAbusiveTestCase1 extends FragmentModelTestFramework {
   IFile _SF2m2;
 
   String SF1airdName = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1.airdfragment";
-  String SF1m2Name = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1.melodyfragment";
+  String SF1m2Name = "SA-System Functions-RSF-SystemFunctionPkg 1-SystemFunction 1.capellafragment";
   String sf1 = "5dec9cce-f8e4-41ea-847e-fa501df56dd2";
   String diag_SF1_SFBD = "[SFBD] SystemFunction 1";
 

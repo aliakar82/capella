@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -239,6 +239,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedDefaultValue(AbstractEnumerationValue newOwnedDefaultValue) {
 
 		if (newOwnedDefaultValue != ownedDefaultValue) {
@@ -325,6 +326,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedNullValue(AbstractEnumerationValue newOwnedNullValue) {
 
 		if (newOwnedNullValue != ownedNullValue) {
@@ -411,6 +413,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMinValue(AbstractEnumerationValue newOwnedMinValue) {
 
 		if (newOwnedMinValue != ownedMinValue) {
@@ -497,6 +500,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setOwnedMaxValue(AbstractEnumerationValue newOwnedMaxValue) {
 
 		if (newOwnedMaxValue != ownedMaxValue) {
@@ -557,6 +561,7 @@ public class EnumerationImpl extends DataTypeImpl implements Enumeration {
 	 * @generated
 	 */
 
+	@Override
 	public void setDomainType(DataType newDomainType) {
 
 		DataType oldDomainType = domainType;

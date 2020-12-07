@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -161,6 +161,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setId(String newId) {
 
 		String oldId = id;
@@ -193,6 +194,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setSid(String newSid) {
 
 		String oldSid = sid;
@@ -289,6 +291,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void destroy() {
 		org.eclipse.emf.ecore.util.EcoreUtil.delete(this);
 	}
@@ -301,6 +304,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public String getFullLabel() {
 		return org.polarsys.capella.common.model.label.LabelRetriever.getFullLabel(this);
 	}
@@ -313,6 +317,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public String getLabel() {
 		return org.polarsys.capella.common.model.label.LabelRetriever.getLabel(this);
 	}
@@ -325,6 +330,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public boolean hasUnnamedLabel() {
 		return org.polarsys.capella.common.model.label.LabelRetriever.UNNAMED_ELEMENT.equals(this.getLabel());
 	}
@@ -450,7 +456,7 @@ public abstract class ModelElementImpl extends ExtensibleElementImpl implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (id: "); //$NON-NLS-1$
 		result.append(id);
 		result.append(", sid: "); //$NON-NLS-1$

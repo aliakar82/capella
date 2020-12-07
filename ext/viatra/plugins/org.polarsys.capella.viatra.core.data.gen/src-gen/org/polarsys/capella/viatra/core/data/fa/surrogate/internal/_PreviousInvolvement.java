@@ -1,6 +1,6 @@
 /**
  * 
- *   Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ *   Copyright (c) 2006, 2020 THALES DMS FRANCE.
  *   
  *   This program and the accompanying materials are made available under the
  *   terms of the Eclipse Public License 2.0 which is available at
@@ -68,9 +68,9 @@ public final class _PreviousInvolvement extends BaseGeneratedEMFQuerySpecificati
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvement (visibility: PUBLIC, simpleName: _PreviousInvolvement, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvement, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate.internal) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link _PreviousInvolvement} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvement (visibility: PUBLIC, simpleName: _PreviousInvolvement, identifier: org.polarsys.capella.viatra.core.data.fa.surrogate.internal._PreviousInvolvement, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.fa.surrogate.internal) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link _PreviousInvolvement#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -96,9 +96,9 @@ public final class _PreviousInvolvement extends BaseGeneratedEMFQuerySpecificati
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final _PreviousInvolvement.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_fci = new PParameter("fci", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_fci = new PParameter("fci", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_previous = new PParameter("previous", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_previous = new PParameter("previous", "org.polarsys.capella.core.data.fa.FunctionalChainInvolvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_fci, parameter_previous);
     
@@ -129,17 +129,17 @@ public final class _PreviousInvolvement extends BaseGeneratedEMFQuerySpecificati
           PBody body = new PBody(this);
           PVariable var_fci = body.getOrCreateVariableByName("fci");
           PVariable var_previous = body.getOrCreateVariableByName("previous");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_previous), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_previous), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_fci, parameter_fci),
              new ExportedParameter(body, var_previous, parameter_previous)
           ));
           // 	FunctionalChainInvolvement.previousFunctionalChainInvolvements(fci, previous)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_fci), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_fci, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement", "previousFunctionalChainInvolvements")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/1.4.0", "FunctionalChainInvolvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_fci, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement", "previousFunctionalChainInvolvements")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/fa/5.0.0", "FunctionalChainInvolvement")));
           new Equality(body, var__virtual_0_, var_previous);
           bodies.add(body);
       }

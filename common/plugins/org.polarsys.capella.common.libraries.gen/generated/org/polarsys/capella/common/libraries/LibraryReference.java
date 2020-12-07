@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -132,7 +132,7 @@ public interface LibraryReference extends LibraryAbstractElement {
 	 * @return the value of the '<em>Version</em>' reference.
 	 * @see #setVersion(ModelVersion)
 	 * @see org.polarsys.capella.common.libraries.LibrariesPackage#getLibraryReference_Version()
-	 * @model required="true"
+	 * @model
 	 * @generated
 	 */
 

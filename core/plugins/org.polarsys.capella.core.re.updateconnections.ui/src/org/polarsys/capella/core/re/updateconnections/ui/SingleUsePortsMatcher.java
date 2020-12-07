@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.updateconnections.ui;
 
-import org.eclipse.emf.diffmerge.api.scopes.IModelScope;
+import org.eclipse.emf.diffmerge.generic.api.scopes.ITreeDataScope;
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * A sample connection matcher that uses a connection's source and target port as the match ID. This is the best
@@ -25,7 +26,7 @@ public class SingleUsePortsMatcher extends ConnectionMatcher {
   }
 
   @Override
-  public Object getMatchID(Connection connection, IModelScope scope, UpdateConnectionsMatchPolicy context) {
+  public Object getMatchID(Connection connection, ITreeDataScope<EObject> scope, UpdateConnectionsMatchPolicy context) {
     return new RelationshipMatchID(context.getMatchID(connection.getSource(), scope),
         context.getMatchID(connection.getTarget(), scope), getClass());
   }

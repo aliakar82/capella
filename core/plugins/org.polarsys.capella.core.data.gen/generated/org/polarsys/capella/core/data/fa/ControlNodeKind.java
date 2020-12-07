@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  *  
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
@@ -218,6 +218,7 @@ public enum ControlNodeKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 	  return value;
 	}
@@ -227,6 +228,7 @@ public enum ControlNodeKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 	  return name;
 	}
@@ -236,6 +238,7 @@ public enum ControlNodeKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 	  return literal;
 	}

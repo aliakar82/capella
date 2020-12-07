@@ -1,6 +1,6 @@
 /**
  * 
- *   Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ *   Copyright (c) 2006, 2020 THALES DMS FRANCE.
  *   
  *   This program and the accompanying materials are made available under the
  *   terms of the Eclipse Public License 2.0 which is available at
@@ -98,9 +98,20 @@ public final class InvolvedElement__involvingInvolvements extends BaseGeneratedE
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public InvolvedElement getSelf() {
@@ -635,9 +646,9 @@ public final class InvolvedElement__involvingInvolvements extends BaseGeneratedE
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements (visibility: PUBLIC, simpleName: InvolvedElement__involvingInvolvements, identifier: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.capellacore.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link InvolvedElement__involvingInvolvements} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements (visibility: PUBLIC, simpleName: InvolvedElement__involvingInvolvements, identifier: org.polarsys.capella.viatra.core.data.capellacore.surrogate.InvolvedElement__involvingInvolvements, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.capellacore.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link InvolvedElement__involvingInvolvements#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -663,9 +674,9 @@ public final class InvolvedElement__involvingInvolvements extends BaseGeneratedE
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final InvolvedElement__involvingInvolvements.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.capellacore.InvolvedElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/core/1.4.0", "InvolvedElement")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.capellacore.InvolvedElement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/core/5.0.0", "InvolvedElement")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.capellacore.Involvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.capellacore.Involvement", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/core/5.0.0", "Involvement")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -696,17 +707,17 @@ public final class InvolvedElement__involvingInvolvements extends BaseGeneratedE
           PBody body = new PBody(this);
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "InvolvedElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "InvolvedElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "Involvement")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	Involvement.involved(target, self)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "Involvement")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "Involvement", "involved")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/1.4.0", "InvolvedElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "Involvement", "involved")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/core/5.0.0", "InvolvedElement")));
           new Equality(body, var__virtual_0_, var_self);
           bodies.add(body);
       }

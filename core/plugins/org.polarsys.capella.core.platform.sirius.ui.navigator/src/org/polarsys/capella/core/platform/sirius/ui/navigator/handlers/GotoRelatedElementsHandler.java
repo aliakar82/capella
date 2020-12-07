@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -25,15 +25,12 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.action.IContributionItem;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
-import org.eclipse.swt.widgets.Menu;
 import org.eclipse.ui.ISelectionService;
 import org.eclipse.ui.actions.CompoundContributionItem;
 import org.eclipse.ui.menus.IWorkbenchContribution;
 import org.eclipse.ui.services.IServiceLocator;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.core.model.handler.helpers.CapellaAdapterHelper;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.CapellaNavigatorPlugin;
-import org.polarsys.capella.core.platform.sirius.ui.navigator.IImageKeys;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.actions.LocateInCapellaExplorerAction;
 import org.polarsys.capella.core.platform.sirius.ui.navigator.internal.navigate.NavigationAdvisor;
 
@@ -119,15 +116,6 @@ public class GotoRelatedElementsHandler extends CompoundContributionItem impleme
     return NavigationAdvisor.getInstance().getNavigableElements(element);
   }
   
-  /**
-   * {@inheritDoc}
-   */
-  @Override
-  public void fill(Menu menu_p, int index_p) {
-    super.fill(menu_p, index_p);
-    menu_p.getParentItem().setImage(CapellaNavigatorPlugin.getDefault().getImage(IImageKeys.IMG_SHOW_IN_CAPELLA_EXPLORER));
-  }
-
   /**
    * Get the related model element.
    * @param uiSelectedElement_p

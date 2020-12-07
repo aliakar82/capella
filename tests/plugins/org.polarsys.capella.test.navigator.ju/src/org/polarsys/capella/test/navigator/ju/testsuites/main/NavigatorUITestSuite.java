@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -26,6 +26,7 @@ import org.polarsys.capella.test.navigator.ju.NavigatorFilterInvalidRepresentati
 import org.polarsys.capella.test.navigator.ju.NavigatorLabelProviderColors;
 import org.polarsys.capella.test.navigator.ju.NavigatorStatusLineRepresentation;
 import org.polarsys.capella.test.navigator.ju.PartIcon;
+import org.polarsys.capella.test.navigator.ju.dnd.DnDTestSuite;
 
 import junit.framework.Test;
 
@@ -50,6 +51,7 @@ public class NavigatorUITestSuite extends BasicTestSuite {
     tests.add(new PartIcon());
     tests.add(new DragDropTest());
     tests.add(new NavigableElementsTest());
+    tests.add(new DnDTestSuite());
 
     return tests;
   }

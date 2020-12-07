@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -1425,7 +1425,7 @@ public class CapellaServices {
   /**
    * used everywhere
    * 
-   * @param current
+   * @param current a diagram element
    * @return current if it is a diagram or the diagram that contains current if it is a DDiagramElement.
    * 
    *         May return null: If used in a style computation or a decoration, the expression will be called twice, the

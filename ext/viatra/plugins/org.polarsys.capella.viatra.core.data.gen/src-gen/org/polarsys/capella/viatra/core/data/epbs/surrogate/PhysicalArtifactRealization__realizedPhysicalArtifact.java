@@ -1,6 +1,6 @@
 /**
  * 
- *   Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ *   Copyright (c) 2006, 2020 THALES DMS FRANCE.
  *   
  *   This program and the accompanying materials are made available under the
  *   terms of the Eclipse Public License 2.0 which is available at
@@ -97,9 +97,20 @@ public final class PhysicalArtifactRealization__realizedPhysicalArtifact extends
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public PhysicalArtifactRealization getSelf() {
@@ -633,9 +644,9 @@ public final class PhysicalArtifactRealization__realizedPhysicalArtifact extends
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact (visibility: PUBLIC, simpleName: PhysicalArtifactRealization__realizedPhysicalArtifact, identifier: org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.epbs.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link PhysicalArtifactRealization__realizedPhysicalArtifact} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact (visibility: PUBLIC, simpleName: PhysicalArtifactRealization__realizedPhysicalArtifact, identifier: org.polarsys.capella.viatra.core.data.epbs.surrogate.PhysicalArtifactRealization__realizedPhysicalArtifact, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.epbs.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link PhysicalArtifactRealization__realizedPhysicalArtifact#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -661,9 +672,9 @@ public final class PhysicalArtifactRealization__realizedPhysicalArtifact extends
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final PhysicalArtifactRealization__realizedPhysicalArtifact.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/epbs/1.4.0", "PhysicalArtifactRealization")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.epbs.PhysicalArtifactRealization", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/epbs/5.0.0", "PhysicalArtifactRealization")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/cs/1.4.0", "AbstractPhysicalArtifact")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.cs.AbstractPhysicalArtifact", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/cs/5.0.0", "AbstractPhysicalArtifact")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -694,17 +705,17 @@ public final class PhysicalArtifactRealization__realizedPhysicalArtifact extends
           PBody body = new PBody(this);
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/epbs/1.4.0", "PhysicalArtifactRealization")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/1.4.0", "AbstractPhysicalArtifact")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/epbs/5.0.0", "PhysicalArtifactRealization")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/cs/5.0.0", "AbstractPhysicalArtifact")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	PhysicalArtifactRealization.targetElement(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/epbs/1.4.0", "PhysicalArtifactRealization")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/epbs/5.0.0", "PhysicalArtifactRealization")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "AbstractTrace", "targetElement")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/1.4.0", "TraceableElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "AbstractTrace", "targetElement")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/common/core/5.0.0", "TraceableElement")));
           new Equality(body, var__virtual_0_, var_target);
           bodies.add(body);
       }

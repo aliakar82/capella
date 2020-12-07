@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -67,6 +67,7 @@ import org.polarsys.capella.core.data.fa.FaPackage;
  *
  * @generated
  */
+@SuppressWarnings("deprecation")
 public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 
 	/**
@@ -100,9 +101,11 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getInvolvedLinks()
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 * @ordered
 	 */
+	@Deprecated
 	protected EList<AbstractPhysicalPathLink> involvedLinks;
 
 
@@ -335,9 +338,11 @@ public class PhysicalPathImpl extends NamedElementImpl implements PhysicalPath {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @deprecated See {@link org.polarsys.capella.core.data.cs.PhysicalPath#getInvolvedLinks() model documentation} for details.
 	 * @generated
 	 */
 
+	@Deprecated
 	public EList<AbstractPhysicalPathLink> getInvolvedLinks() {
 
 		if (involvedLinks == null) {

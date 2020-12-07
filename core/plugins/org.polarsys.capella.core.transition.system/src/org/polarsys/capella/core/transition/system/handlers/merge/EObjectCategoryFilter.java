@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,9 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativePresence;
+import org.eclipse.emf.diffmerge.diffdata.EElementRelativePresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -67,13 +67,13 @@ public class EObjectCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IElementRelativePresence) {
-      EObject o = ((IElementRelativePresence) difference).getElementMatch().get(Role.REFERENCE);
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EElementRelativePresence) {
+      EObject o = ((EElementRelativePresence) difference).getElementMatch().get(Role.REFERENCE);
       if (o != null && keepElement(o)) {
         return true;
       }
-      o = ((IElementRelativePresence) difference).getElementMatch().get(Role.TARGET);
+      o = ((EElementRelativePresence) difference).getElementMatch().get(Role.TARGET);
       if (o != null && keepElement(o)) {
         return true;
       }

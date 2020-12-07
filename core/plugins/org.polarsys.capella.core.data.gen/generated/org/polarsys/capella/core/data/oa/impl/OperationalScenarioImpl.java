@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -125,6 +125,7 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setContext(String newContext) {
 
 		String oldContext = context;
@@ -157,6 +158,7 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	 * @generated
 	 */
 
+	@Override
 	public void setObjective(String newObjective) {
 
 		String oldObjective = objective;
@@ -250,7 +252,7 @@ public abstract class OperationalScenarioImpl extends NamedElementImpl implement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (context: "); //$NON-NLS-1$
 		result.append(context);
 		result.append(", objective: "); //$NON-NLS-1$

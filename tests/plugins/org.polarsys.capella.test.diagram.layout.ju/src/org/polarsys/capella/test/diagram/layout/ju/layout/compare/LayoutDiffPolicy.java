@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -22,10 +22,10 @@ import org.polarsys.capella.test.diagram.layout.ju.layout.LayoutPackage;
 public class LayoutDiffPolicy extends DefaultDiffPolicy {
 
   @Override
-  public boolean considerOrdered(EStructuralFeature feature_p) {
+  protected boolean considerOrderedFeature(EStructuralFeature feature_p) {
     return false;
   }
-
+  
   @Override
   public boolean coverFeature(EStructuralFeature feature_p) {
     return !(LayoutPackage.Literals.ISEMANTIC_LAYOUT__NAME.equals(feature_p))

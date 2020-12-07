@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -18,7 +18,6 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Stack;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.util.EcoreUtil;
@@ -30,6 +29,7 @@ import org.polarsys.capella.common.data.modellingcore.AbstractExchangeItem;
 import org.polarsys.capella.common.data.modellingcore.AbstractNamedElement;
 import org.polarsys.capella.common.data.modellingcore.AbstractType;
 import org.polarsys.capella.common.helpers.EObjectExt;
+import org.polarsys.capella.common.helpers.EObjectLabelProviderHelper;
 import org.polarsys.capella.common.mdsofa.common.constant.ICommonConstants;
 import org.polarsys.capella.common.queries.filters.IQueryFilter;
 import org.polarsys.capella.common.queries.interpretor.QueryInterpretor;
@@ -66,7 +66,6 @@ import org.polarsys.capella.core.data.interaction.InstanceRole;
 import org.polarsys.capella.core.data.interaction.InteractionFragment;
 import org.polarsys.capella.core.data.interaction.InteractionOperand;
 import org.polarsys.capella.core.data.interaction.InteractionPackage;
-import org.polarsys.capella.core.data.interaction.InteractionState;
 import org.polarsys.capella.core.data.interaction.MessageEnd;
 import org.polarsys.capella.core.data.interaction.MessageKind;
 import org.polarsys.capella.core.data.interaction.Scenario;
@@ -91,6 +90,7 @@ import org.polarsys.capella.core.sirius.analysis.CapellaServices;
 import org.polarsys.capella.core.sirius.analysis.IMappingNameConstants;
 import org.polarsys.capella.core.sirius.analysis.InformationServices;
 import org.polarsys.capella.core.sirius.analysis.SequenceDiagramServices;
+import org.polarsys.capella.core.sirius.analysis.cache.ScenarioCache;
 
 import com.google.common.base.Predicate;
 import com.google.common.base.Predicates;
@@ -244,10 +244,12 @@ public class ScenarioService {
 
   public String getInstanceRoleLabel(InstanceRole ir) {
     StringBuilder result = new StringBuilder();
-
+    
     AbstractInstance representedInstance = ir.getRepresentedInstance();
+    if (representedInstance == null) {
+      return "[" + EObjectLabelProviderHelper.getMetaclassLabel(ir, false) + "]";
+    }
     AbstractType type = representedInstance.getAbstractType();
-
     if (type == null || TriStateBoolean.True.equals(CapellaProjectHelper.isReusableComponentsDriven(type))) {
       result.append(EObjectExt.getText(representedInstance));
     } else {
@@ -884,95 +886,13 @@ public class ScenarioService {
    * @param ir
    * @return
    */
-  public List<StateFragment> getInteractionStatesOnExecution(InstanceRole ir) {
-    List<StateFragment> result = new ArrayList<StateFragment>(1);
-    List<InteractionFragment> fragments = SequenceDiagramServices
-        .getOrderedInteractionFragments((Scenario) ir.eContainer());
-    Stack<TimeLapse> execStack = new Stack<TimeLapse>();
-
-    for (InteractionFragment ifg : fragments) {
-      if (ifg.getCoveredInstanceRoles().contains(ir)) {
-        if ((ifg instanceof InteractionState) && execStack.isEmpty()) {
-          result.add((StateFragment) getStartingExecution(ifg));
-        }
-
-        TimeLapse startingExec = getStartingExecution(ifg);
-        if ((startingExec != null) && (startingExec instanceof Execution)) {
-          execStack.push(startingExec);
-        }
-
-        TimeLapse endingExec = getEndingExecution(ifg);
-        if ((endingExec != null) && (endingExec instanceof Execution) && !(execStack.isEmpty())) {
-          execStack.pop();
-        }
-      }
-    }
-    return result;
+  public Collection<StateFragment> getInteractionStatesOnExecution(InstanceRole ir) {
+    return ScenarioCache.getInstance().getStateFragmentSemanticCandidates(ir, ir);
   }
 
-  public List<StateFragment> getInteractionStatesOnExecution(Execution exec) {
-    List<StateFragment> result = new ArrayList<StateFragment>(1);
-    InstanceRole ir = exec.getCovered();
-
-    List<InteractionFragment> fragments = SequenceDiagramServices
-        .getOrderedInteractionFragments((Scenario) exec.eContainer());
-    Stack<TimeLapse> execStack = new Stack<TimeLapse>();
-    boolean inCurrentExec = false;
-    for (InteractionFragment ifg : fragments) {
-      if (ifg.getCoveredInstanceRoles().contains(ir)) {
-        if (exec.getStart() == ifg) {
-          inCurrentExec = true;
-        }
-
-        if (inCurrentExec && (ifg instanceof InteractionState) && !(execStack.isEmpty())
-            && (execStack.peek() == exec)) {
-          result.add((StateFragment) getStartingExecution(ifg));
-        }
-
-        TimeLapse startingExec = getStartingExecution(ifg);
-        if ((startingExec != null) && !(startingExec instanceof CombinedFragment)) {
-          execStack.push(startingExec);
-        }
-
-        TimeLapse endingExec = getEndingExecution(ifg);
-        if ((endingExec != null) && !(endingExec instanceof CombinedFragment) && !(execStack.isEmpty())) {
-          execStack.pop();
-        }
-
-        if (exec.getFinish() == ifg) {
-          inCurrentExec = false;
-        }
-      }
-    }
-    return result;
-  }
-
-  /**
-   * @param ifg
-   * @return
-   */
-  private TimeLapse getEndingExecution(InteractionFragment ifg) {
-    Scenario s = SequenceDiagramServices.getScenario(ifg);
-    for (TimeLapse lap : s.getOwnedTimeLapses()) {
-      if (lap.getFinish() == ifg) {
-        return lap;
-      }
-    }
-    return null;
-  }
-
-  /**
-   * @param ifg
-   * @return
-   */
-  private TimeLapse getStartingExecution(InteractionFragment ifg) {
-    Scenario s = SequenceDiagramServices.getScenario(ifg);
-    for (TimeLapse lap : s.getOwnedTimeLapses()) {
-      if (lap.getStart() == ifg) {
-        return lap;
-      }
-    }
-    return null;
+  public Collection<StateFragment> getInteractionStatesOnExecution(Execution exec) {
+    return ScenarioCache.getInstance().getStateFragmentSemanticCandidates(SequenceDiagramServices.currentInstanceRole(exec),
+        exec);
   }
 
   public List<InstanceRole> getCoveredFromAbstractFragment(AbstractFragment af) {

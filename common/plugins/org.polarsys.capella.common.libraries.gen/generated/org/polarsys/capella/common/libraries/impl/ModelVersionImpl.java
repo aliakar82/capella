@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -149,6 +149,7 @@ public class ModelVersionImpl extends LibraryAbstractElementImpl implements Mode
 	 * @generated
 	 */
 
+	@Override
 	public void setMajorVersionNumber(int newMajorVersionNumber) {
 
 		int oldMajorVersionNumber = majorVersionNumber;
@@ -181,6 +182,7 @@ public class ModelVersionImpl extends LibraryAbstractElementImpl implements Mode
 	 * @generated
 	 */
 
+	@Override
 	public void setMinorVersionNumber(int newMinorVersionNumber) {
 
 		int oldMinorVersionNumber = minorVersionNumber;
@@ -213,6 +215,7 @@ public class ModelVersionImpl extends LibraryAbstractElementImpl implements Mode
 	 * @generated
 	 */
 
+	@Override
 	public void setLastModifiedFileStamp(long newLastModifiedFileStamp) {
 
 		long oldLastModifiedFileStamp = lastModifiedFileStamp;
@@ -316,7 +319,7 @@ public class ModelVersionImpl extends LibraryAbstractElementImpl implements Mode
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (majorVersionNumber: "); //$NON-NLS-1$
 		result.append(majorVersionNumber);
 		result.append(", minorVersionNumber: "); //$NON-NLS-1$

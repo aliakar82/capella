@@ -1,6 +1,6 @@
 /**
  *
- *  Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ *  Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  *  
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
@@ -224,6 +224,7 @@ public class FunctionalChainInvolvementLinkImpl extends FunctionalChainInvolveme
 	 * @generated
 	 */
 
+	@Override
 	public void setExchangeContext(Constraint newExchangeContext) {
 
 		Constraint oldExchangeContext = exchangeContext;
@@ -290,6 +291,7 @@ public class FunctionalChainInvolvementLinkImpl extends FunctionalChainInvolveme
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(FunctionalChainInvolvementFunction newSource) {
 
 		FunctionalChainInvolvementFunction oldSource = source;
@@ -335,6 +337,7 @@ public class FunctionalChainInvolvementLinkImpl extends FunctionalChainInvolveme
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(FunctionalChainInvolvementFunction newTarget) {
 
 		FunctionalChainInvolvementFunction oldTarget = target;

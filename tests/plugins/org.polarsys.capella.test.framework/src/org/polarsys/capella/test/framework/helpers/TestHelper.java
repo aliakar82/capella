@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -69,13 +69,13 @@ public class TestHelper {
    */
   public static final String CAPELLA_PROJECT_NATURE = "org.polarsys.capella.project.nature"; //$NON-NLS-1$
 
-  public static Project getProjectFromMelodyModeller(IFile melodyModellerFile) {
-    URI uri = URI.createPlatformResourceURI(melodyModellerFile.getFullPath().toOSString(), true);
+  public static Project getProjectFromCapellaResource(IFile capellaResourceFile) {
+    URI uri = URI.createPlatformResourceURI(capellaResourceFile.getFullPath().toOSString(), true);
     ExecutionManager execManager = ExecutionManagerRegistry.getInstance().addNewManager();
-    ResourceSet rsMelody = execManager.getEditingDomain().getResourceSet();
-    Resource rMelody = rsMelody.getResource(uri, true);
-    EcoreUtil.resolveAll(rMelody);
-    return CapellaLibraryExt.getProject(rMelody);
+    ResourceSet resourceSet = execManager.getEditingDomain().getResourceSet();
+    Resource resource = resourceSet.getResource(uri, true);
+    EcoreUtil.resolveAll(resource);
+    return CapellaLibraryExt.getProject(resource);
   }
 
   /**

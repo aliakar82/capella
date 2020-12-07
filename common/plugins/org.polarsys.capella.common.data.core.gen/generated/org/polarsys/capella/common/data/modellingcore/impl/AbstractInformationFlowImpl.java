@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -201,6 +201,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	 * @generated
 	 */
 
+	@Override
 	public void setRealizedFlow(AbstractInformationFlow newRealizedFlow) {
 
 		if (newRealizedFlow != realizedFlow) {
@@ -297,6 +298,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(InformationsExchanger newSource) {
 
 		InformationsExchanger oldSource = source;
@@ -350,6 +352,7 @@ public abstract class AbstractInformationFlowImpl extends AbstractNamedElementIm
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(InformationsExchanger newTarget) {
 
 		InformationsExchanger oldTarget = target;

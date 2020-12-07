@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -87,10 +87,8 @@ public class MetricAction extends BaseSelectionListenerAction {
 
     if (metricTree != null) {
       for (MetricTree<EObject> leaf : metricTree.getLeafs()) {
-
         EObject container = leaf.getElement();
         Map<EClass, Integer> classToCount = countObjectByClass(container);
-
         for (Entry<EClass, Integer> entry : classToCount.entrySet()) {
           // Create temporary objects just to get their name and image.
           EClass eClass = entry.getKey();
@@ -99,6 +97,7 @@ public class MetricAction extends BaseSelectionListenerAction {
           MetricTree<EObject> newTreeNode = new MetricTree<>(tempEObject, leaf);
           newTreeNode.increaseCount(countOfClass);
         }
+        leaf.sortChildren();
       }
     }
     return metricTree;

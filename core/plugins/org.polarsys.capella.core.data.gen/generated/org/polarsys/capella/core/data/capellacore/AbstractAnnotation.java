@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -53,6 +53,7 @@ public interface AbstractAnnotation extends CapellaElement {
 	 * @model annotation="http://www.polarsys.org/capella/2007/UML2Mapping featureName='body' featureOwner='Comment'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='The textual content of the annotation (free format)\r\n[source:Capella study]' constraints='None' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='uml::Comment::body or creation of an Expression as specification of a uml::Constraint' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

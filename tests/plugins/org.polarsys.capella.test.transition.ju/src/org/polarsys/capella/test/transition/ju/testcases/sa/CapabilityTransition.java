@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -94,7 +94,7 @@ public class CapabilityTransition extends TopDownTransitionTestCase {
   public void performTest1() throws Exception {
             performCapabilityTransition(Collections.singletonList(_saCapa11));
 
-            _laCapa11 = _rootCRPkg.getOwnedCapabilityRealizations().get(0);
+            _laCapa11 = mustBeTransitioned(ModelCtxLa.capa11Id);
             mustNotBeNull(_saCapa11);
 
             assertTrue(NLS.bind(Messages.RealizationError, _laCapa11.getName(), _saCapa11.getName()),

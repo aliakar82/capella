@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2014 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -49,7 +49,7 @@ public interface IImageKeys {
   /**
    * Show In Capella Explorer image id.<br>
    */
-  public final static String IMG_SHOW_IN_CAPELLA_EXPLORER = "capella_16.png"; //$NON-NLS-1$
+  public final static String IMG_SHOW_IN_CAPELLA_EXPLORER = "eview16/project_explorer.png"; //$NON-NLS-1$
   /**
    * Validate enabled image id.<br>
    */

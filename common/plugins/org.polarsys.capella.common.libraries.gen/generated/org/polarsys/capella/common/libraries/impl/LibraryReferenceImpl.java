@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -154,6 +154,7 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setLibrary(ModelInformation newLibrary) {
 
 		ModelInformation oldLibrary = library;
@@ -186,6 +187,7 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setAccessPolicy(AccessPolicy newAccessPolicy) {
 
 		AccessPolicy oldAccessPolicy = accessPolicy;
@@ -239,6 +241,7 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 	 * @generated
 	 */
 
+	@Override
 	public void setVersion(ModelVersion newVersion) {
 
 		ModelVersion oldVersion = version;
@@ -344,7 +347,7 @@ public class LibraryReferenceImpl extends LibraryAbstractElementImpl implements 
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (accessPolicy: "); //$NON-NLS-1$
 		result.append(accessPolicy);
 		result.append(')');

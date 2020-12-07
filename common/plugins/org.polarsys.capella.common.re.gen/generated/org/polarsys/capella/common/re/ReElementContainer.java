@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -52,6 +52,7 @@ public interface ReElementContainer extends EObject {
 	 * @return the value of the '<em>Owned Elements</em>' containment reference list.
 	 * @see org.polarsys.capella.common.re.RePackage#getReElementContainer_OwnedElements()
 	 * @model containment="true" resolveProxies="true"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

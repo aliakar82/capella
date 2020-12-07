@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2017, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -15,10 +15,10 @@ package org.polarsys.capella.test.model.ju.rename;
 import java.util.ArrayList;
 import java.util.List;
 
-import junit.framework.Test;
-
 import org.polarsys.capella.test.framework.api.BasicTestArtefact;
 import org.polarsys.capella.test.framework.api.BasicTestSuite;
+
+import junit.framework.Test;
 
 public class RenameModelTestSuite extends BasicTestSuite {
 
@@ -34,6 +34,7 @@ public class RenameModelTestSuite extends BasicTestSuite {
     tests.add(new RenameAfmTestCase());
     tests.add(new RenameProjectWithOpenedSessionTestCase());
     tests.add(new RenameAirdWithSpaceInProjectNameTestCase());
+    tests.add(new RenameSpecialCharTestCase());
     return tests;
   }
 }

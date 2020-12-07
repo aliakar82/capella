@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -380,6 +380,7 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 	 * @generated
 	 */
 
+	@Override
 	public void setAdditionalInformation(String newAdditionalInformation) {
 
 		String oldAdditionalInformation = additionalInformation;
@@ -412,6 +413,7 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 	 * @generated
 	 */
 
+	@Override
 	public void setLevel(String newLevel) {
 
 		String oldLevel = level;
@@ -627,7 +629,7 @@ public class RequirementsPkgImpl extends NamedElementImpl implements Requirement
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (additionalInformation: "); //$NON-NLS-1$
 		result.append(additionalInformation);
 		result.append(", level: "); //$NON-NLS-1$

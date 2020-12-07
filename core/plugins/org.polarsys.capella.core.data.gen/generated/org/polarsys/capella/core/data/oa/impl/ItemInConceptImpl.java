@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -129,6 +129,7 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 	 * @generated
 	 */
 
+	@Override
 	public void setConcept(Concept newConcept) {
 
 		Concept oldConcept = concept;
@@ -182,6 +183,7 @@ public class ItemInConceptImpl extends NamedElementImpl implements ItemInConcept
 	 * @generated
 	 */
 
+	@Override
 	public void setItem(AbstractConceptItem newItem) {
 
 		AbstractConceptItem oldItem = item;

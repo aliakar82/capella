@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,10 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.common.re.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.Role;
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IElementPresence;
-import org.eclipse.emf.diffmerge.api.diff.IElementRelativeDifference;
+import org.eclipse.emf.diffmerge.diffdata.EElementPresence;
+import org.eclipse.emf.diffmerge.generic.api.Role;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
 import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.common.re.handlers.replicable.ReplicableElementHandlerHelper;
 import org.polarsys.capella.core.transition.common.constants.ITransitionConstants;
@@ -42,9 +41,9 @@ public class AvoidMergeUnmodifiableCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IElementPresence) {
-      IElementRelativeDifference diff = (IElementRelativeDifference) difference;
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EElementPresence) {
+      EElementPresence diff = (EElementPresence) difference;
       EObject source = diff.getElementMatch().get(Role.REFERENCE);
       if (source != null) {
         if (ReplicableElementHandlerHelper.getInstance(context).isUnmodifiableElement(source, context)) {

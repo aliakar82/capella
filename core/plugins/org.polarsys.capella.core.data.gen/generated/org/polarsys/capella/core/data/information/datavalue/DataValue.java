@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -57,6 +57,7 @@ public interface DataValue extends NamedElement, ValueSpecification {
 	 * @see org.polarsys.capella.core.data.information.datavalue.DatavaluePackage#getDataValue_Abstract()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='whether or not the value is abstract' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

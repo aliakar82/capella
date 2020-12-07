@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -54,6 +54,7 @@ public interface Feature extends NamedElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getFeature_IsAbstract()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::BehavioralFeature::isAbstract' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='specifies whether the Feature is abstract or concrete\r\n[source: Capella study]' constraints='none' type='true is Feature is abstract' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -94,6 +95,7 @@ public interface Feature extends NamedElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getFeature_IsStatic()
 	 * @model annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::Feature::isStatic' explanation='none' constraints='none'"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Specifies whether the Feature is static\r\n[source: Capella study]' constraints='none' type='true if Feature is static' comment/notes='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -136,6 +138,7 @@ public interface Feature extends NamedElement {
 	 * @see org.polarsys.capella.core.data.capellacore.CapellacorePackage#getFeature_Visibility()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='the type of visibility of this feature\r\n[source: Capella study]' constraints='none' type='refer to VisibilityKind' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::NamedElement::visibility' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

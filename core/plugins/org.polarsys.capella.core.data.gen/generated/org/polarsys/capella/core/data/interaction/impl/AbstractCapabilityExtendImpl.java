@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -142,6 +142,7 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	 * @generated
 	 */
 
+	@Override
 	public void setExtended(AbstractCapability newExtended) {
 
 		AbstractCapability oldExtended = extended;
@@ -271,6 +272,7 @@ public class AbstractCapabilityExtendImpl extends RelationshipImpl implements Ab
 	 * @generated
 	 */
 
+	@Override
 	public void setExtensionLocation(AbstractCapabilityExtensionPoint newExtensionLocation) {
 
 		if (newExtensionLocation != extensionLocation) {

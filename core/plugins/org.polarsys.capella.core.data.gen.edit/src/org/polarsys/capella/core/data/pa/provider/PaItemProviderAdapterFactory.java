@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -317,6 +317,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
 		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
@@ -327,6 +328,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
@@ -402,6 +404,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -412,6 +415,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -422,6 +426,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -436,6 +441,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
 		if (physicalArchitecturePkgItemProvider != null) physicalArchitecturePkgItemProvider.dispose();
 		if (physicalArchitectureItemProvider != null) physicalArchitectureItemProvider.dispose();
@@ -496,7 +502,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 			@Override
 			public Object caseAbstractActivity(AbstractActivity object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/1.4.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/5.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -524,7 +530,7 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 			@Override
 			public Object caseActivityGroup(ActivityGroup object) {
 				// begin-extension-code
-				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/1.4.0")) { //$NON-NLS-1$
+				if (ModelExtensionHelper.getInstance(object).isExtensionModelDisabled(EcoreUtil.getRootContainer(object).eClass().getEPackage().getNsURI(), "http://www.polarsys.org/capella/core/pa/5.0.0")) { //$NON-NLS-1$
 					return null;				
 				}
 				// end-extension-code
@@ -562,8 +568,8 @@ public class PaItemProviderAdapterFactory extends PaAdapterFactory implements Co
 		 */
 		public Collection<Object> getNewChildDescriptors(Object object, EditingDomain editingDomain) {
 			ArrayList<Object> result = new ArrayList<Object>();
-		   new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
-		   return result;
+			new CreationSwitch(result, editingDomain).doSwitch((EObject)object);
+			return result;
 		}
 
 		/**

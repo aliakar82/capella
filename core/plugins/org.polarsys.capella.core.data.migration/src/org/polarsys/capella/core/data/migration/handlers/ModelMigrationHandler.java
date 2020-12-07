@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -49,7 +49,10 @@ public class ModelMigrationHandler extends AbstractMigrationHandler {
   @Override
   protected boolean isValidSelection(List<Object> selection) {
     for (Object select : selection) {
-      if (!((select instanceof IFile) && CapellaResourceHelper.isCapellaResource(((IFile) select)))) {
+      if (!(select instanceof IFile && (CapellaResourceHelper.isCapellaResource((IFile) select)
+          // This is only required for Capella 5.0 since legacy resource must be migrated.
+          // TODO remove this in the next version
+          || CapellaResourceHelper.isLegacyCapellaResource((IFile) select)))) {
         return false;
       }
     }

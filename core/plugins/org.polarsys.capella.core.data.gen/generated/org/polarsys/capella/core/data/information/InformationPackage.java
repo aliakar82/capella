@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -36,6 +36,7 @@ import org.polarsys.capella.core.data.information.datavalue.DatavaluePackage;
  * @model kind="package"
  *        annotation="http://www.polarsys.org/kitalpha/emde/1.0.0/extension trackResourceModification='true' useUUIDs='false' useIDAttributes='true' extensibleProviderFactory='true' childCreationExtenders='true'"
  *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Information aims at defining the data transmission language (named Information due to the namespacing strange effects if it would have been named Data). It includes the notion of data as well as the different data communication means.\r\n[source: Capella study]' usage\040guideline='none' used\040in\040levels='operational,system,logical,physical,epbs' usage\040examples='none' constraints='This package depends on the model CapellaCore.ecore' comment/notes='none' reference\040documentation='n/a'"
+ *        annotation="http://www.polarsys.org/capella/semantic"
  * @generated
  */
 public interface InformationPackage extends EPackage {
@@ -53,7 +54,7 @@ public interface InformationPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/core/information/1.4.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/core/information/5.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

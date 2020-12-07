@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -189,6 +189,7 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setName(String newName) {
 
 		String oldName = name;
@@ -221,6 +222,7 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setIsDimension(boolean newIsDimension) {
 
 		boolean oldIsDimension = isDimension;
@@ -253,6 +255,7 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setIsExternal(boolean newIsExternal) {
 
 		boolean oldIsExternal = isExternal;
@@ -306,6 +309,7 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	 * @generated
 	 */
 
+	@Override
 	public void setRepresentedElement(AbstractType newRepresentedElement) {
 
 		AbstractType oldRepresentedElement = representedElement;
@@ -568,7 +572,7 @@ public abstract class ActivityPartitionImpl extends ActivityGroupImpl implements
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (name: "); //$NON-NLS-1$
 		result.append(name);
 		result.append(", isDimension: "); //$NON-NLS-1$

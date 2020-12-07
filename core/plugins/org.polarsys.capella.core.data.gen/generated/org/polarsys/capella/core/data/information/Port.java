@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -124,6 +124,7 @@ public interface Port extends NamedElement {
 	 * @model containment="true" resolveProxies="true"
 	 *        annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='allows to associate state machines to this port, specifying the communication protocol of incoming data\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='keyword::specific' explanation='Elements are contained in the nearest possible parent container.' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -207,6 +208,7 @@ public interface Port extends NamedElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_ProvidedInterfaces()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='lists the Interfaces that are provided through this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -232,6 +234,7 @@ public interface Port extends NamedElement {
 	 * @see org.polarsys.capella.core.data.information.InformationPackage#getPort_RequiredInterfaces()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='lists the Interfaces that are required by this port\r\n[source: Capella study]' constraints='none' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

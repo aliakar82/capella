@@ -1,6 +1,6 @@
 /**
  * 
- *   Copyright (c) 2006, 2019 THALES DMS FRANCE.
+ *   Copyright (c) 2006, 2020 THALES DMS FRANCE.
  *   
  *   This program and the accompanying materials are made available under the
  *   terms of the Eclipse Public License 2.0 which is available at
@@ -98,9 +98,20 @@ public final class CommunicationLinkExchanger__send extends BaseGeneratedEMFQuer
     
     @Override
     public Object get(final String parameterName) {
-      if ("self".equals(parameterName)) return this.fSelf;
-      if ("target".equals(parameterName)) return this.fTarget;
-      return null;
+      switch(parameterName) {
+          case "self": return this.fSelf;
+          case "target": return this.fTarget;
+          default: return null;
+      }
+    }
+    
+    @Override
+    public Object get(final int index) {
+      switch(index) {
+          case 0: return this.fSelf;
+          case 1: return this.fTarget;
+          default: return null;
+      }
     }
     
     public CommunicationLinkExchanger getSelf() {
@@ -632,9 +643,9 @@ public final class CommunicationLinkExchanger__send extends BaseGeneratedEMFQuer
   }
   
   /**
-   * Inner class allowing the singleton instance of {@link JvmGenericType: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__send (visibility: PUBLIC, simpleName: CommunicationLinkExchanger__send, identifier: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__send, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.information.communication.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)} to be created 
+   * Inner class allowing the singleton instance of {@link CommunicationLinkExchanger__send} to be created 
    *     <b>not</b> at the class load time of the outer class, 
-   *     but rather at the first call to {@link JvmGenericType: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__send (visibility: PUBLIC, simpleName: CommunicationLinkExchanger__send, identifier: org.polarsys.capella.viatra.core.data.information.communication.surrogate.CommunicationLinkExchanger__send, deprecated: <unset>) (abstract: false, static: false, final: true, packageName: org.polarsys.capella.viatra.core.data.information.communication.surrogate) (interface: false, strictFloatingPoint: false, anonymous: false)#instance()}.
+   *     but rather at the first call to {@link CommunicationLinkExchanger__send#instance()}.
    * 
    * <p> This workaround is required e.g. to support recursion.
    * 
@@ -660,9 +671,9 @@ public final class CommunicationLinkExchanger__send extends BaseGeneratedEMFQuer
   private static class GeneratedPQuery extends BaseGeneratedEMFPQuery {
     private static final CommunicationLinkExchanger__send.GeneratedPQuery INSTANCE = new GeneratedPQuery();
     
-    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLinkExchanger")), PParameterDirection.INOUT);
+    private final PParameter parameter_self = new PParameter("self", "org.polarsys.capella.core.data.information.communication.CommunicationLinkExchanger", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkExchanger")), PParameterDirection.INOUT);
     
-    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.information.communication.CommunicationLink", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink")), PParameterDirection.INOUT);
+    private final PParameter parameter_target = new PParameter("target", "org.polarsys.capella.core.data.information.communication.CommunicationLink", new EClassTransitiveInstancesKey((EClass)getClassifierLiteralSafe("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink")), PParameterDirection.INOUT);
     
     private final List<PParameter> parameters = Arrays.asList(parameter_self, parameter_target);
     
@@ -693,25 +704,25 @@ public final class CommunicationLinkExchanger__send extends BaseGeneratedEMFQuer
           PBody body = new PBody(this);
           PVariable var_self = body.getOrCreateVariableByName("self");
           PVariable var_target = body.getOrCreateVariableByName("target");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLinkExchanger")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkExchanger")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink")));
           body.setSymbolicParameters(Arrays.<ExportedParameter>asList(
              new ExportedParameter(body, var_self, parameter_self),
              new ExportedParameter(body, var_target, parameter_target)
           ));
           // 	CommunicationLinkExchanger.ownedCommunicationLinks(self, target)
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLinkExchanger")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkExchanger")));
           PVariable var__virtual_0_ = body.getOrCreateVariableByName(".virtual{0}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLinkExchanger", "ownedCommunicationLinks")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_self, var__virtual_0_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkExchanger", "ownedCommunicationLinks")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_0_), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink")));
           new Equality(body, var__virtual_0_, var_target);
           // CommunicationLink.kind(target, ::SEND)
           PVariable var__virtual_1_ = body.getOrCreateVariableByName(".virtual{1}");
-          new ConstantValue(body, var__virtual_1_, org.polarsys.capella.core.data.information.communication.CommunicationLinkKind.get("SEND"));
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink")));
+          new ConstantValue(body, var__virtual_1_, getEnumLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkKind", "SEND").getInstance());
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target), new EClassTransitiveInstancesKey((EClass)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink")));
           PVariable var__virtual_2_ = body.getOrCreateVariableByName(".virtual{2}");
-          new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLink", "kind")));
-          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_2_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/1.4.0", "CommunicationLinkKind")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var_target, var__virtual_2_), new EStructuralFeatureInstancesKey(getFeatureLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLink", "kind")));
+          new TypeConstraint(body, Tuples.flatTupleOf(var__virtual_2_), new EDataTypeInSlotsKey((EDataType)getClassifierLiteral("http://www.polarsys.org/capella/core/information/communication/5.0.0", "CommunicationLinkKind")));
           new Equality(body, var__virtual_2_, var__virtual_1_);
           bodies.add(body);
       }

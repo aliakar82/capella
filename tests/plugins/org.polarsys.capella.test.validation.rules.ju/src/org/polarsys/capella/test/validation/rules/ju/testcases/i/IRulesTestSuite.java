@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018, 2019, 2020 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -69,7 +69,8 @@ public class IRulesTestSuite extends BasicTestSuite {
     tests.add(new Rule_I_40_OnCapability());
     tests.add(new Rule_I_40_OnMission());
     tests.add(new Rule_I_43_ElementReferencesAirdOrProxyElement());
-    
+    tests.add(new Rule_I_45());
+
     return tests;
   }
 

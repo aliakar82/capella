@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2019, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -76,6 +76,8 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new CreateRule_ES2ES_03());
     tests.add(new CreateRule_ES2ES_04());
     tests.add(new CreateRule_ES2ES_SystemAllocation());
+    tests.add(new CreateRule_ES2ES_MoveFunction());
+    tests.add(new CreateRule_ES2ES_MoveFunctionPort());
     tests.add(new CreateRule_ES2IS_01());
     tests.add(new CreateRule_ES2IS_02());
     tests.add(new CreateRule_ESF2ESB_01());
@@ -139,6 +141,14 @@ public class TransitionsTestSuite extends BasicTestSuite {
     tests.add(new CreateRule_IS2IS_EPBS_01());
     tests.add(new CreateRule_IS2IS_EPBS_02());
     tests.add(new CreateRule_IS2IS_EPBS_03());
+    tests.add(new TwiceAllocation());
+    tests.add(new NonLeafAllocation());
+    tests.add(new ReferencedScenarios_01());
+    tests.add(new ReferencedScenarios_02());
+    tests.add(new ReferencedScenarios_03());
+    tests.add(new ReferencedScenarios_04());
+    tests.add(new ReferencedScenarios_05());
+    
     return tests;
   }
 

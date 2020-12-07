@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -69,6 +69,7 @@ import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.provide
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.SourceElementContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TargetElementContentProvider;
 import org.polarsys.capella.core.platform.eclipse.capella.ui.trace.views.providers.TypeElementFilter;
+import org.polarsys.capella.core.ui.properties.CapellaUIPropertiesPlugin;
 
 /**
  * <code>TraceTreeViewer</code> render a composite containing a tree structure and a combo to filter
@@ -384,6 +385,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
     for (String traceName : TraceNameHelper.getManualTraceTypes()) {
       MenuItem item = new MenuItem(_additionMenu, SWT.PUSH);
       item.setText(traceName);
+      item.setImage(AbstractUIPlugin.imageDescriptorFromPlugin(MDTrace.PLUGIN_ID, IImageKeys.MENU_ITEM).createImage());
       item.addSelectionListener(_menuSelectionListener);
     }
   }
@@ -438,6 +440,9 @@ public class TraceTreeViewer implements IDoubleClickListener {
     CapellaModelTreeContentProvider contentProvider = new CapellaModelTreeContentProvider();
     contentProvider.setRootPkg((ModelElement) root);
 
+    boolean expandViewer = CapellaUIPropertiesPlugin.getDefault().isAllowedExpandSingleViewerContent();
+    int viewerExpandLevel = expandViewer ? AbstractTreeViewer.ALL_LEVELS : 0;
+    
     TraceTreeSelectionDialog dlg =
         new TraceTreeSelectionDialog(_treeViewer.getControl().getShell(), new CapellaModelLabelProvider((CapellaElement) _currentNamedElement, isNewTrace_p),
             contentProvider, _currentNamedElement, isNewTrace_p);
@@ -446,6 +451,7 @@ public class TraceTreeViewer implements IDoubleClickListener {
     dlg.setHelpAvailable(true);
     dlg.setTitle(Messages.getString("TraceTreeViewer.window_title")); //$NON-NLS-1$
     dlg.setAllowMultiple(false);
+    dlg.setViewerExpandLevel(viewerExpandLevel);
     // dlg.setDoubleClickSelects(false);
     if (Window.OK == dlg.open()) {
       if (dlg.getResult().length > 0) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -291,15 +291,27 @@ public class TransitionCommandHelper {
   }
 
   public boolean isStateMachineTransitionAvailable(EObject object) {
-    return ((object instanceof BlockArchitecture)
-        || ((object instanceof Component) && !(((Component) object).getOwnedStateMachines().isEmpty()))
-        || ((object instanceof Part) && (((Part) object).getAbstractType() != null)
-            && (((Part) object).getAbstractType() instanceof Component)
-            && !(((Component) ((Part) object).getAbstractType()).getOwnedStateMachines().isEmpty()))
-        || (object instanceof StateMachine) || (object instanceof AbstractState) || (object instanceof StateTransition))
+    return ((object instanceof BlockArchitecture
+        && isSMTransitionAvailableOnBlockArchitecture((BlockArchitecture) object))
+        || ((object instanceof Component) && isSMTransitionAvailableOnComponent((Component) object))
+        || (object instanceof Part && isSMTransitionAvailableOnPart((Part) object)) || (object instanceof StateMachine)
+        || (object instanceof AbstractState) || (object instanceof StateTransition))
         && ((object instanceof CapellaElement) && !CapellaLayerCheckingExt.isAOrInEPBSLayer((CapellaElement) object)
             && !CapellaLayerCheckingExt.isAOrInPhysicalLayer((CapellaElement) object));
 
+  }
+
+  private boolean isSMTransitionAvailableOnComponent(Component comp) {
+    return !comp.getOwnedStateMachines().isEmpty();
+  }
+
+  private boolean isSMTransitionAvailableOnPart(Part part) {
+    return part.getAbstractType() instanceof Component
+        && isSMTransitionAvailableOnComponent((Component) part.getAbstractType());
+  }
+
+  private boolean isSMTransitionAvailableOnBlockArchitecture(BlockArchitecture arch) {
+    return arch.getSystem() != null && isSMTransitionAvailableOnComponent(arch.getSystem());
   }
 
   public boolean isDataTransitionAvailable(EObject object) {
@@ -383,6 +395,10 @@ public class TransitionCommandHelper {
       BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
       return (object.equals(architecture.getSystem()));
 
+    } else if (object instanceof Part && CapellaLayerCheckingExt.isInContextLayer((CapellaElement) object)) {
+      Component component = getComponent(object);
+      BlockArchitecture architecture = BlockArchitectureExt.getRootBlockArchitecture(object);
+      return (component != null && component.equals(architecture.getSystem()));
     }
     return false;
   }

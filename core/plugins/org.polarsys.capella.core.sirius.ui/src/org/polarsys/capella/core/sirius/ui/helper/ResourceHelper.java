@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 THALES GLOBAL SERVICES.
+ * Copyright (c) 2018, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -37,7 +37,7 @@ public class ResourceHelper {
   private ResourceHelper() {
     // Do nothing
   }
-  
+
   /**
    * 
    * @param project
@@ -51,7 +51,7 @@ public class ResourceHelper {
       }
     });
   }
-  
+
   /**
    * 
    * @param container
@@ -66,7 +66,11 @@ public class ResourceHelper {
       }
     });
   }
-  
+
+  public static Collection<IFile> collectFiles(IContainer container) {
+    return collectFiles(container, x -> true);
+  }
+
   private static Collection<IFile> collectFiles(IContainer container, Predicate<String> predicate) {
     List<IFile> result = new ArrayList<>();
     if (container.isAccessible()) {

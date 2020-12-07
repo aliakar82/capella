@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2016, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,8 +12,9 @@
  *******************************************************************************/
 package org.polarsys.capella.core.transition.system.topdown.handlers.merge;
 
-import org.eclipse.emf.diffmerge.api.diff.IDifference;
-import org.eclipse.emf.diffmerge.api.diff.IReferenceValuePresence;
+import org.eclipse.emf.diffmerge.diffdata.EReferenceValuePresence;
+import org.eclipse.emf.diffmerge.generic.api.diff.IDifference;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.polarsys.capella.core.data.capellacore.CapellacorePackage;
@@ -51,9 +52,9 @@ public class AppliedPropertyValuesCategoryFilter extends CategoryFilter {
   }
 
   @Override
-  public boolean covers(IDifference difference) {
-    if (difference instanceof IReferenceValuePresence) {
-      EReference feature = ((IReferenceValuePresence) difference).getFeature();
+  public boolean covers(IDifference<EObject> difference) {
+    if (difference instanceof EReferenceValuePresence) {
+      EReference feature = ((EReferenceValuePresence) difference).getFeature();
       return covers(feature);
     }
     return false;

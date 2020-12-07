@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2017 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -39,6 +39,7 @@ public class Messages extends NLS {
   public static String CapellaScope_DifferentVersion;
   public static String CapellaScope_DifferentVersionInterruption;
   public static String CapellaScope_PermissionCommandName;
+  public static String CapellaScope_WriteError;
   public static String PredefinedTypesCmd_boolean_name;
   public static String PredefinedTypesCmd_byte_name;
   public static String PredefinedTypesCmd_char_name;

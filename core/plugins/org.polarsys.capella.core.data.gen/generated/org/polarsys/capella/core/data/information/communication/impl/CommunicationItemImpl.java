@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -210,6 +210,7 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 	 * @generated
 	 */
 
+	@Override
 	public void setVisibility(VisibilityKind newVisibility) {
 
 		VisibilityKind oldVisibility = visibility;
@@ -458,7 +459,7 @@ public abstract class CommunicationItemImpl extends ClassifierImpl implements Co
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (visibility: "); //$NON-NLS-1$
 		result.append(visibility);
 		result.append(')');

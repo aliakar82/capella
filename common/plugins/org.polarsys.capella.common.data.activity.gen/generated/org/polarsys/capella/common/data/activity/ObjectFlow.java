@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -55,6 +55,7 @@ public interface ObjectFlow extends ActivityEdge {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectFlow_IsMulticast()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the objects in the flow are passed by multicasting\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectFlow:isMulticast' explanation='' constraints='The cardinality of uml::ObjectFlow::isMulticast is [1..1].'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 
@@ -95,6 +96,7 @@ public interface ObjectFlow extends ActivityEdge {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getObjectFlow_IsMultireceive()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Tells whether the objects in the flow are gathered from respondents to multicasting\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::ObjectFlow::isMultireceive' explanation='none' constraints='Cardinality of uml::ObjectFlow::isMultiReceive is [1..1]'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

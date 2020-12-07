@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -190,6 +190,7 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	 * @generated
 	 */
 
+	@Override
 	public void setSource(CatalogElement newSource) {
 
 		CatalogElement oldSource = source;
@@ -243,6 +244,7 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	 * @generated
 	 */
 
+	@Override
 	public void setTarget(EObject newTarget) {
 
 		EObject oldTarget = target;
@@ -296,6 +298,7 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	 * @generated
 	 */
 
+	@Override
 	public void setOrigin(CatalogElementLink newOrigin) {
 
 		CatalogElementLink oldOrigin = origin;
@@ -343,6 +346,7 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	 * @generated
 	 */
 
+	@Override
 	public void setSuffixed(boolean newSuffixed) {
 
 		boolean oldSuffixed = suffixed;
@@ -468,7 +472,7 @@ public class CatalogElementLinkImpl extends ReAbstractElementImpl implements Cat
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (unsynchronizedFeatures: "); //$NON-NLS-1$
 		result.append(unsynchronizedFeatures);
 		result.append(", suffixed: "); //$NON-NLS-1$

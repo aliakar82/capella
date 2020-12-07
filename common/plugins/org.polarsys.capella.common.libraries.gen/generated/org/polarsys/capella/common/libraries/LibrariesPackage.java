@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2019 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -50,7 +50,7 @@ public interface LibrariesPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_URI = "http://www.polarsys.org/capella/common/libraries/1.4.0"; //$NON-NLS-1$
+	String eNS_URI = "http://www.polarsys.org/capella/common/libraries/5.0.0"; //$NON-NLS-1$
 
 	/**
 	 * The package namespace name.

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -134,6 +134,7 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 	 * @generated
 	 */
 
+	@Override
 	public void setOperator(InteractionOperatorKind newOperator) {
 
 		InteractionOperatorKind oldOperator = operator;
@@ -298,7 +299,7 @@ public class CombinedFragmentImpl extends AbstractFragmentImpl implements Combin
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
-		StringBuffer result = new StringBuffer(super.toString());
+		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (operator: "); //$NON-NLS-1$
 		result.append(operator);
 		result.append(')');

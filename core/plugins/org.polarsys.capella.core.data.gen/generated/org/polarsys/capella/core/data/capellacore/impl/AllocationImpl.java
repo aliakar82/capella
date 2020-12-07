@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -129,6 +129,7 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 	 * @generated
 	 */
 
+	@Override
 	public void setTargetElement(TraceableElement newTargetElement) {
 
 		TraceableElement oldTargetElement = targetElement;
@@ -182,6 +183,7 @@ public abstract class AllocationImpl extends RelationshipImpl implements Allocat
 	 * @generated
 	 */
 
+	@Override
 	public void setSourceElement(TraceableElement newSourceElement) {
 
 		TraceableElement oldSourceElement = sourceElement;

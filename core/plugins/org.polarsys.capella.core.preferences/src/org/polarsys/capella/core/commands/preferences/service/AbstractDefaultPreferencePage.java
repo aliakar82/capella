@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2007, 2009 LCELB
+ *  Copyright (c) 2007, 2020 LCELB
  *  
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License 2.0 which is available at
@@ -15,26 +15,20 @@ package org.polarsys.capella.core.commands.preferences.service;
 import java.io.IOException;
 
 import org.apache.log4j.Logger;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.preference.IPersistentPreferenceStore;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Group;
-import org.eclipse.ui.IWorkbenchPreferencePage;
-
 import org.polarsys.capella.common.tools.report.config.registry.ReportManagerRegistry;
 import org.polarsys.capella.common.tools.report.util.IReportManagerDefaultComponents;
-import org.polarsys.capella.core.commands.preferences.preferences.ConfigurabilityPreferences;
-import org.polarsys.capella.core.commands.preferences.util.PreferencesHelper;
-import org.polarsys.capella.core.commands.preferences.util.XmlPreferencesConfig;
+import org.polarsys.capella.core.preferences.Activator;
 
 /**
  * Abstract default preference page for account manager UI.
  */
-public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEditorPreferencePage implements IAbstractDefaultPreferencePage,
-    IWorkbenchPreferencePage {
+public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEditorPreferencePage implements IAbstractDefaultPreferencePage {
 
   /*
    * 
@@ -67,20 +61,7 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
     setTitle(getPageTitle());
     setDescription(getPageDescription());
   }
-
   
-  
-  
-  /**
-   * @see org.eclipse.ui.IWorkbenchPreferencePage#init(org.eclipse.ui.IWorkbench)
-   */
-  protected void setEnable(Composite parent, UserProfileModeEnum userMode) {
-	  parent.setEnabled(ConfigurabilityPreferences.isInstanceScopePreferenceItemEnabled(XmlPreferencesConfig.USER_PROFILE_MODE_ID));
-	  COMPOSITE_FIEL_EDITORS.add(parent);
-  }
-  
-  
-
   /**
    * Get the title of this page
    * @return
@@ -92,42 +73,16 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
    * @return
    */
   protected abstract String getPageDescription();
-
-  /**
-   * @see org.eclipse.jface.preference.FieldEditorPreferencePage#performOk()
-   */
-  @Override
-  public boolean performOk() {
-    boolean ok = super.performOk();
-    IPreferenceStore store = getPreferenceStore();
-    if (store instanceof IPersistentPreferenceStore) {
-      try {
-
-        ((IPersistentPreferenceStore) store).save();
-
-      } catch (IOException e) {
-        StringBuilder loggerMessage = new StringBuilder(Messages.AbstractDefaultPreferencePage_SavePreferences_ErrorMessage);
-        __logger.warn(loggerMessage.toString(), e);
-        return false;
-      }
-    }
-
-    return ok;
-  }
   
   public boolean performCancel() {
-      
 	  return true;
   }
 
-  public IPreferenceStore getProjectPreferenceStore() {
-    final IProject selectedCapellaProject = PreferencesHelper.getSelectedCapellaProject();
-    if (selectedCapellaProject != null) {
-      return PreferencesHelper.getProjectScope(selectedCapellaProject);
-    }
-    return super.getPreferenceStore();
+  @Override
+  protected IPreferenceStore doGetPreferenceStore() {
+    return Activator.getDefault().getPreferenceStore();
   }
-
+  
   /**
    * Create a new group in the page.
    * @param label_p
@@ -146,13 +101,6 @@ public abstract class AbstractDefaultPreferencePage extends ConfigurableFieldEdi
     gridData.grabExcessVerticalSpace = false;
     group.setLayoutData(gridData);
     return group;
-  }
-
-  @Override
-  protected void performDefaults() {
-    super.performDefaults();
-
-    return;
   }
 
 }

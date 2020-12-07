@@ -3,7 +3,7 @@
 == Capella Installation ==
 === Prerequisites Needed for Install ===
 For a successful installation of Capella, your computer must meet the following recommended requirements:
-  
+
 *  64 bit computer running Windows 7/8/10, Windows Server 2008/2012/2016
 *  An unzip software such as 7Zip or equivalent
 *  2 GHz processor
@@ -12,19 +12,28 @@ For a successful installation of Capella, your computer must meet the following 
 
 Starting with Capella 5.0, Open JDK 14 is directly embedded in the product.
 Having a Java environment on your machine is no longer a requirement.
+
+If however you want to use a different JDK version, you need to modify the '''capella.ini''' file at 2 places. The first one is to add a -vm argument that points to your JDK location. The second one is to modify -Dosgi.requiredJavaVersion argument to point to your JDK version. Please refer to the [https://wiki.eclipse.org/Eclipse.ini|following link] for more information. Notice that only the embedded JDK has been field-tested.
+
+==== Trouble shooting ====
+If launching Capella in Windows OS ends up with the following pop-up, it means that your OS misses some libraries to be compatible with JDK 14.
+
+[[Image:Images/LaunchingPopup.png]]
+
+The solution is to install this Microsoft's update according to your OS version: https://support.microsoft.com/en-us/help/2999226/update-for-universal-c-runtime-in-windows
 === Capella Installation Procedure ===
 Before starting the installation, the target location of Capella must be cleaned:
 
 # The previous Capella version must be correctly uninstalled (See related section)
 # All manual patches/extensions must be removed    
 # Download Capella and extract it in a given directory 
-   
+
 '''Note''' : '''See Restriction''' 
 === Verification Installation Procedure ===
 The Capella installation is successful  if the archive extraction finished without errors.
 
 *  The Capella folder should contain two folders:
-** eclipse: the Capella modeling workbench with the .exe of Capella 
+** capella: the Capella modeling workbench with the .exe of Capella 
 ** samples: the sample models
 
 === Multi-user installation ===
@@ -50,7 +59,7 @@ Multi user shared install.
 * The users must clean their configuration area each time the set of plugins is modified.
 
 ===== Setup: =====
-* Either in '''eclipse.ini''' or '''config.ini''' file, add the argument '''osgi.configuration.area=@user.home/path/to/user/configuration''' .
+* Either in '''capella.ini''' or '''config.ini''' file, add the argument '''osgi.configuration.area=@user.home/path/to/user/configuration''' .
 
 ==== Strategy 3 - Shared configuration ====
 Multi user shared configuration install.
@@ -63,8 +72,8 @@ Multi user shared configuration install.
 *  The administrator must do the setup operations with '''administrator rights'''!
 
 ===== Setup: =====
-* For normal users: In '''eclipse.ini''' add the argument '''osgi.configuration.area=@user.home/path/to/user/configuration''' . 
-* For administrator: create a '''admin.ini''' file, having the same content as '''eclipse.ini''' in which the line  '''osgi.configuration.area''' is removed, and launch Capella referencing the '''admin.ini''' file.
+* For normal users: In '''capella.ini''' add the argument '''osgi.configuration.area=@user.home/path/to/user/configuration''' . 
+* For administrator: create a '''admin.ini''' file, having the same content as '''capella.ini''' in which the line  '''osgi.configuration.area''' is removed, and launch Capella referencing the '''admin.ini''' file.
 
 
 ==== Strategy 4 - Multi-level shared configuration ====
@@ -79,7 +88,7 @@ Multi level user shared configuration install.
 
 * The working environment administrators initialize their local shared configurations by adding the argument '''-Dosgi.configuration.area=path/to/shared/configuration''' to their own custom '''.ini''' file. 
 
-* Users configure their '''eclipse.ini''' to point to the shared configuration area of the working environment that they belong to, as follows:
+* Users configure their '''capella.ini''' to point to the shared configuration area of the working environment that they belong to, as follows:
 ** '''-Dosgi.sharedConfiguration.area=path/to/shared/configuration'''
 ** '''-Dosgi.configuration.cascaded=true'''
 
@@ -90,47 +99,47 @@ Sometimes due to security policy, the web browser has problem on opening local h
 
 == Addons Installation ==
 There are 3 ways to install addons :
-# Simple installation 
+* Simple installation 
 ** Install the addons directly in the dropins folder of Capella :
-## Unzip the archive of the addon in your Capella "dropins" directory
-# External installation 
+*** Unzip the archive of the addon in your Capella "dropins" directory
+* External installation 
 ** Install the addons in an external directory and configure Capella to get them from this specific directory :
-## Unzip the archive of the addon in a directory
-## Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=<myAddonsDirectory> at the end of the eclipse.ini file (after -vm)
-# Multiple contexts installation 
+*** Unzip the archive of the addon in a directory
+*** Add -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=<myAddonsDirectory> at the end of the capella.ini file (after -vm)
+* Multiple contexts installation 
 ** Create several contexts with specific addons and allow users to launch Capella on one or another context :
-### Create contexts directories (copy eclipse.ini from Capella and unzip the needed addons in a dropins folder). 
-### For each context, change the eclipse.ini file as follows:
+*** Create contexts directories (copy capella.ini from Capella and unzip the needed addons in a dropins folder). 
+*** For each context, change the capella.ini file as follows:
 
 [[Image:Images/3.9.%20How%20to%20install%20Cappela%20and%20Addons_Multicontext_Install.png|588x330px]]
-* For Context_A, add the following lines at the end of the eclipse.ini file (afer -vm)-(Example)
+* For Context_A, add the following lines at the end of the capella.ini file (after -vm)
 {| border="1"
 |-
-|  
-| 
+|
+(Example)
 * Dropins location in Context_A directory
 -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=D:\CapellaContexts\Context_A\dropins
 * Configuration location for Context_A in the user's specific directory
 -Dosgi.configuration.area=@user.home/.../Capella/Context_A/configuration
 * Default workspace location for Context_A in user's specific directory
 -Dosgi.instance.area.default=@user.home/../Capella/Context_A/workspace
- 
 |}
-* For Context_B, add the following lines at the end of the eclipse.ini file (afer -vm)-(Example)
+* For Context_B, add the following lines at the end of the capella.ini file (after -vm)
+
 {| border="1"
 |-
-|  
-| 
-* Dropins location in Context_A directory
+|
+(Example)
+* Dropins location in Context_B directory
 -Dorg.eclipse.equinox.p2.reconciler.dropins.directory=D:\CapellaContexts\Context_B\dropins
-* Configuration location for Context_A in user's specific directory
+* Configuration location for Context_B in user's specific directory
 -Dosgi.configuration.area=@user.home/.../Capella/Context_B/configuration
 * Default workspace location for Context_B in user's specific directory
 -Dosgi.instance.area.default=@user.home/../Capella/Context_B/workspace
 |}
-* Create shortcuts to launch Capella using the eclipse.ini file stored in the expected context:
-** For context A: <CAPELLA_INSTALLATION_DIR>\eclipse\eclipse.exe --launcher.ini D:\CapellaContexts\Context_A\eclipse.ini
-** For context B: <CAPELLA_INSTALLATION_DIR>\eclipse\eclipse.exe --launcher.ini D:\CapellaContexts\Context_B\eclipse.ini
+* Create shortcuts to launch Capella using the capella.ini file stored in the expected context:
+** For context A: <CAPELLA_INSTALLATION_DIR>\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_A\capella.ini
+** For context B: <CAPELLA_INSTALLATION_DIR>\capella\capella.exe --launcher.ini D:\CapellaContexts\Context_B\capella.ini
 The extensions for Capella requires the installation of the following software:
 
 * Capella : For the Capella installation, please refer to this guide
@@ -142,7 +151,7 @@ The installation procedure is the same for all addons.
 To manually install your addon:
 
 *  Download the addon as a dropin
-*  Extract the contents of the downloaded archive into <CAPELLA_INSTALLATION_DIR>/eclipse/dropins directory
+*  Extract the contents of the downloaded archive into <CAPELLA_INSTALLATION_DIR>/capella/dropins directory
 Check that the extraction process has finished without error.
 *  Start Capella
 
@@ -152,14 +161,14 @@ Check that the extraction process has finished without error.
 | 
 [[Image:Images/Warning.png|34x34px]]
 
- 
+
 | 
 - Make sure that the installed addon as dropin has a valid structure. The structure is similar to:
 * '''<addon name>\eclipse\plugins\*''' 
 * '''<addon name>\eclipse\features\* '''
 
 - The structure is different from the one of an '''update site'''. The '''update site''' does have the '''artifacts.jar''' and '''content.jar''' which might cause problems for installing a plug-in.
- 
+
 |}
 
 ==== As Update Site ====
@@ -196,32 +205,32 @@ The following procedure for verifying the successful installation of addons, ass
 | 
 [[Image:Images/Warning.png|34x34px]]
 
- 
+
 | 
 - After updating the installation of Capella, do not forget to restart the application with the option '''-clean'''. Remove this option for the next times to avoid starting performance issues.
 
 - Do not forget to switch to a new workspace when the configuration is modified, since some information are cached by Eclipse (Java version, etc...).
- 
+
 |}
 == Restriction ==
 
 {| border="1"
 |-
-| 
+|
 [[Image:Images/Warning.png|34x34px]]
 
- 
-| 
+
+|
 Capella is based on Eclipse: folder hierarchy and namespace of Capella and Eclipse plugins are quite long. Because of Windows folder path restriction, avoid entering a long installation location. 
 
 In case the path is too long, some files can not be opened by Capella and this will cause errors. Since the extraction will raise an error you should delete the partially extracted files and re-extract it.
 
 Example in the [[../help/topic/org.polarsys.capella.ui.doc/html/04.%20User%20Interface/4.06.%20Properties%20View.html#Description_Section |Description Section ]].
 
-The limit is '''115''' characters in the path of the Capella directory to the eclipse folder: <CAPELLA_INSTALLATION_DIR>/eclipse.
+The limit is '''115''' characters in the path of the Capella directory to the capella folder: <CAPELLA_INSTALLATION_DIR>/capella.
 
- 
+
 '''Note: the "space" character is counted like three characters (%20)'''.
 
- 
+
 |}

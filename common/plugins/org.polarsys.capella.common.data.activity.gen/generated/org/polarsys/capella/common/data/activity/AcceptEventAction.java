@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -53,6 +53,7 @@ public interface AcceptEventAction extends AbstractAction {
 	 * @see org.polarsys.capella.common.data.activity.ActivityPackage#getAcceptEventAction_IsUnmarshall()
 	 * @model annotation="http://www.polarsys.org/kitalpha/ecore/documentation description='Indicates whether there is a single output pin for the event, or multiple output pins for attributes of the event\r\n[source: UML superstructure v2.2]' constraints='none' type='n/a' comment/notes='none'"
 	 *        annotation="http://www.polarsys.org/capella/MNoE/CapellaLike/Mapping UML/SysML\040semantic\040equivalences='uml::AcceptEventAction::isUnmarshall' explanation='none' constraints='none'"
+	 *        annotation="http://www.polarsys.org/capella/semantic"
 	 * @generated
 	 */
 

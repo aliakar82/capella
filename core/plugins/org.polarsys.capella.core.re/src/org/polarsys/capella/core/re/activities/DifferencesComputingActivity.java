@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2016 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -12,7 +12,8 @@
  *******************************************************************************/
 package org.polarsys.capella.core.re.activities;
 
-import org.eclipse.emf.diffmerge.api.IMergePolicy;
+import org.eclipse.emf.diffmerge.generic.api.IMergePolicy;
+import org.eclipse.emf.ecore.EObject;
 import org.polarsys.capella.core.re.policies.merge.CapellaMergePolicy;
 import org.polarsys.kitalpha.transposer.rules.handler.rules.api.IContext;
 
@@ -25,7 +26,7 @@ public class DifferencesComputingActivity
   public static final String ID = DifferencesComputingActivity.class.getCanonicalName();
 
   @Override
-  protected IMergePolicy createMergePolicy(IContext context) {
+  protected IMergePolicy<EObject> createMergePolicy(IContext context) {
     return new CapellaMergePolicy(context);
   }
 

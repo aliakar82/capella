@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2006, 2015 THALES GLOBAL SERVICES.
+ * Copyright (c) 2006, 2020 THALES GLOBAL SERVICES.
  * 
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License 2.0 which is available at
@@ -128,6 +128,7 @@ public class NumericReferenceImpl extends NumericValueImpl implements NumericRef
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedValue(NumericValue newReferencedValue) {
 
 		NumericValue oldReferencedValue = referencedValue;
@@ -181,6 +182,7 @@ public class NumericReferenceImpl extends NumericValueImpl implements NumericRef
 	 * @generated
 	 */
 
+	@Override
 	public void setReferencedProperty(Property newReferencedProperty) {
 
 		Property oldReferencedProperty = referencedProperty;
